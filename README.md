@@ -1,4 +1,4 @@
-# Hook
-The Hook Project
+# Polichat
+The Polichat Project
 
 pls no merge conflicts guy
