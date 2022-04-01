@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Polichat_final.MvcApplication" Language="C#" %>

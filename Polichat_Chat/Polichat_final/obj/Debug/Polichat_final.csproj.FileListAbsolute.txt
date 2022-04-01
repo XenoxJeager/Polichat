@@ -1,0 +1,2 @@
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\Polichat_final\Polichat_final\obj\Debug\Polichat_final.csproj.AssemblyReference.cache
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\Polichat_final\Polichat_final\obj\Debug\Polichat_final.csproj.CoreCompileInputs.cache
