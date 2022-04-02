@@ -1,0 +1,134 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Application\\WSChat.Backend.Application.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Application\\WSChat.Backend.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Application\\WSChat.Backend.Application.csproj",
+        "projectName": "WSChat.Backend.Application",
+        "projectPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Application\\WSChat.Backend.Application.csproj",
+        "packagesPath": "C:\\Users\\xenia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\xenia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Domain\\WSChat.Backend.Domain.csproj": {
+                "projectPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Domain\\WSChat.Backend.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[8.6.2, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Domain\\WSChat.Backend.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Domain\\WSChat.Backend.Domain.csproj",
+        "projectName": "WSChat.Backend.Domain",
+        "projectPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Domain\\WSChat.Backend.Domain.csproj",
+        "packagesPath": "C:\\Users\\xenia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\xenia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
