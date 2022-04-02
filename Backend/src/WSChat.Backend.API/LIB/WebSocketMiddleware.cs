@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace Polichat_final
+namespace Polichat_Backend
 {
     public class SocketMiddleware
     {

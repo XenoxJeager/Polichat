@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Polichat_final
+namespace Polichat_Backend
 {
     public abstract class SocketHandler
     {

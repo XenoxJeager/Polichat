@@ -249,6 +249,15 @@
         "runtime": {
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
+      },
+      "UGen/1.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.1/UGen.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/UGen.dll": {}
+        }
       }
     }
   },
@@ -665,12 +674,25 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "UGen/1.0.2": {
+      "sha512": "nByhgMA4ZP3AfolaVpCKgLkT0riCeUtVyR4y5FkYOenB8zWsx3eLtU0dnoUkyZfR+0q2NaCc7YQ7f8Qdbf+vRw==",
+      "type": "package",
+      "path": "ugen/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp2.1/UGen.dll",
+        "ugen.1.0.2.nupkg.sha512",
+        "ugen.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.AspNetCore.StaticFiles >= 2.2.0",
-      "Newtonsoft.Json >= 12.0.3"
+      "Newtonsoft.Json >= 12.0.3",
+      "UGen >= 1.0.2"
     ]
   },
   "packageFolders": {
@@ -679,11 +701,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
+      "projectUniqueName": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
       "projectName": "Polichat_Backend",
-      "projectPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
+      "projectPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
       "packagesPath": "C:\\Users\\xenia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.API\\obj\\",
+      "outputPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\xenia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -719,6 +741,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[12.0.3, )"
+          },
+          "UGen": {
+            "target": "Package",
+            "version": "[1.0.2, )"
           }
         },
         "imports": [

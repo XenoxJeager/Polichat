@@ -4,8 +4,9 @@ using System.Linq;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using UGen;
 
-namespace Polichat_final
+namespace Polichat_Backend
 {
     public class ConnectionService
     {
@@ -18,7 +19,7 @@ namespace Polichat_final
 
         private string GenerateConnectionId()
         {
-            return Guid.NewGuid().ToString("N");
+            return UGen.UGenerator.Generate();
         }
 
         public void AddSocket(WebSocket socket)

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj": {}
+    "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj": {
+    "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
+        "projectUniqueName": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
         "projectName": "Polichat_Backend",
-        "projectPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
+        "projectPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
         "packagesPath": "C:\\Users\\xenia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.API\\obj\\",
+        "outputPath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\xenia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -47,6 +47,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "UGen": {
+              "target": "Package",
+              "version": "[1.0.2, )"
             }
           },
           "imports": [

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore;
-namespace Polichat_final
+namespace Polichat_Backend
 {
     public static class SocketExtension
     {

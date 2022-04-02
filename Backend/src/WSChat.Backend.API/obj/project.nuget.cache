@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mfPPKCGJNDBRYiWt5u0J+y/mRLGbzGGvK/49yz2lA1leOBufTf4th8YZcUCqGRYanUa5Y482MpH2Yd5cwjlT3Q==",
+  "dgSpecHash": "RR1hSMoWJTUp9JYg7u6NT33XLqFqHD8rK/nLR+JmBCbooXZkuLHuB/IomiIC5nQf+ld/bcfot0Cs4W3Z+ypcKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\old_Polichat\\WSChat-Dev\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
+  "projectFilePath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\xenia\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\xenia\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
@@ -24,7 +24,8 @@
     "C:\\Users\\xenia\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
     "C:\\Users\\xenia\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
     "C:\\Users\\xenia\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
-    "C:\\Users\\xenia\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+    "C:\\Users\\xenia\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
+    "C:\\Users\\xenia\\.nuget\\packages\\ugen\\1.0.2\\ugen.1.0.2.nupkg.sha512"
   ],
   "logs": []
 }
