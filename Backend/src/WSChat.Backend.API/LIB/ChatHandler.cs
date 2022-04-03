@@ -21,7 +21,7 @@ namespace Polichat_Backend
             {
                 await base.OnConnected(socket);
                 var sid = Connections.GetId(socket);
-                await SendMessageToAll($"{sid} just joined one of the Great Chats of Polichat!!");
+                await SendMessageToAll($"{sid} just joined the {Connections.GetRoomID(socket)} Chatroom remain civil !!");
             }
 
             public override async Task Receive(WebSocket socket, WebSocketReceiveResult result, byte[] buffer)

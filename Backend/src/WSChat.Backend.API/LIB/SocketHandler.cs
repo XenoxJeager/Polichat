@@ -51,6 +51,7 @@ namespace Polichat_Backend
         {
             foreach (var connection in Connections.GetAllConnections())
             {
+                
                 await Send(connection.Value, message);
             }
         }

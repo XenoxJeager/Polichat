@@ -10,7 +10,8 @@ namespace WebSocketClientTest
         {
             using (WebSocket ws = new WebSocket("ws://localhost:28556/ws"))
             {
-                while (true)
+                int x = 0;
+                while (x !=2)
                     
                 {
                     ws.OnMessage += Ws_OnMessage;
@@ -18,7 +19,7 @@ namespace WebSocketClientTest
                     
                     var a = Console.ReadLine();
                     ws.Send(a);
-                    
+                    x++;
                 }
               
             }
