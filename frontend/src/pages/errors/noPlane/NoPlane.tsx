@@ -1,0 +1,1 @@
+export const NoPlane = () => (<p>No plane was passed</p>);
