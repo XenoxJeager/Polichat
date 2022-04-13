@@ -177,6 +177,8 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
     }
 
     render(): React.ReactNode {
+        return <p>Quiz</p>;
+        
         const state = this.state.windowState;
 
         switch (state) {
