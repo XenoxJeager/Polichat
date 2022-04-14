@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { NavigateFunction, useNavigate } from "react-router";
-import { AnswerButton, NeutralButton } from "./components/AnswerButton";
+import { AnswerButton } from "./components/AnswerButton";
 import { normalizeQuestions, SelectableWeightedQuestion, Weight, WeightedQuestion } from "./questions";
 
 interface QuizProps {
