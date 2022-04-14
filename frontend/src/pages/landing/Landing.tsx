@@ -47,22 +47,21 @@ export default class Landing extends React.Component<LandingProps, LandingState>
         return (
             <div className="grid place-items-center h-screen">
                 <div className="grid place-items-center">
-                    <h1 className="text-7xl font-bold">{"Polichat"}</h1>
-                    <p className="text-2xl font-bold text-stone-500">Where do <b><i>you</i></b> stand?</p>
+                    <h1 className="  text-7xl font-bold ">{"Polichat"}</h1>
+                    <p className="   text-2xl font-bold text-stone-500 ">Where do <b><i>you</i></b> stand?</p>
                 </div>
                 
-                <div className="flex-none">
+    
                     <Link to="quiz">
                         <button 
-                            className="bg-blue-500 text-white border-b-[7px] border-x-[5px] border-blue-700 font-bold py-3.5 px-8 border-blue-700 rounded
+                           className="bg-blue-500 text-white border-b-[7px] border-x-[5px] border-blue-700 font-bold py-3.5 px-8 border-blue-700 rounded
                                     text-xl
-                                    hover:bg-blue-500 hover:border-blue-600
-                                    active:border-b-[4px] active:border-x-[3px]"
+                                    hover:bg-blue-500  hover:border-blue-600 
+                                    active:border-b-[4px] active:border-x-[3px] active:mt-[2px]  " // abstand matters!!!
                         >
                             Take the quiz
                         </button>
                     </Link>
-                </div>
             </div>
         );
     }
