@@ -146,7 +146,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                         </div>
 
                         <div>
-                            <NeutralButton onClick={this.tryNextQuestion.bind(this)} />
+                            <AnswerButton text="Neutral/Skip" weight={{weightX: 0, weightY: 0}} onClick={this.updatePlane}/>
                         </div>
 
                         <div>

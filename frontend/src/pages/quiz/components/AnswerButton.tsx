@@ -12,11 +12,3 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({text, weight, onClick
         {text} {(weight.weightX).toFixed(3)} | {(weight.weightY).toFixed(3)}
     </button>
 );
-
-interface NeutralButtonProps {
-    onClick: () => void;
-}
-
-export const NeutralButton: React.FC<NeutralButtonProps> = ({onClick}) => (
-    <button onClick={onClick}>Neutral/Skip</button>
-);
