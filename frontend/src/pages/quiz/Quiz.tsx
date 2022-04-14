@@ -55,7 +55,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
             };
         }
 
-        let amount = 1;
+        let amount = 20;
         let questions: SelectableWeightedQuestion[] = Array(amount);
 
         for(let i = 0; i < amount; i++)
@@ -76,7 +76,6 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
     }
 
     handleClick(weight: Weight) {
-        /*
         const func = (weight: Weight, mult: number) => {
             this.plane.x += weight.weightX * mult;
             this.plane.y += weight.weightY * mult;
@@ -91,7 +90,6 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
         currentQuestion.selectedWeight = weight;
 
         this.tryNextQuestion();
-        */
     }
 
     tryNextQuestion() {
@@ -120,7 +118,6 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
     }
 
     renderQuiz(): React.ReactNode {
-        /*
         const currentQuestion = this.state.normalizedQuestions?.[this.state.index];
 
         if(currentQuestion == null) return;
@@ -164,8 +161,6 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                 </div>
             </div>
         );
-        */
-       return null;
     }
 
     renderLoading(): React.ReactNode {
@@ -177,8 +172,6 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
     }
 
     render(): React.ReactNode {
-        return <p>Quiz</p>;
-        
         const state = this.state.windowState;
 
         switch (state) {
