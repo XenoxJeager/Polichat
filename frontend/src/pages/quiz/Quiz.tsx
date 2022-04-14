@@ -114,6 +114,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
 
         if (nextIndex < 0) {
             // we have reached the beginning of the questions
+            (this.props.navigate)!("/");
         } else {
             // we go to the previous question
             this.setState({index: nextIndex});
