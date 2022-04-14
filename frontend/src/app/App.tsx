@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Route, Router, Routes } from 'react-router';
 import Landing from '../pages/landing/Landing';
-import { Plane, Quiz } from '../pages/quiz/Quiz';
+import { Plane, WrappedQuiz } from '../pages/quiz/Quiz';
 import Result from '../pages/result/Result';
 import './App.css';
 import { NoPlane } from '../pages/errors/noPlane/NoPlane';
@@ -10,31 +10,19 @@ import { NotFound } from '../pages/errors/notFound/NotFound';
 import { Analytics } from '../pages/analytics/Analytics';
 
 interface AppState {
-  windowState: WindowState,
   plane?: Plane
 }
 
-enum WindowState {
-  Landing,
-  Quiz,
-  Result
-}
-
 export default class App extends React.Component<{}, AppState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      windowState: WindowState.Landing
-    };
-  }
+  constructor() {
+    // TODO: fix warning
+    super({});
 
-  landingClickHandler() {
-    this.setState({windowState: WindowState.Quiz});
+    this.state = {};
   }
 
   calculateResult(plane: Plane) {
     this.setState({
-      windowState: WindowState.Result,
       plane: plane
     });
   }
@@ -43,8 +31,8 @@ export default class App extends React.Component<{}, AppState> {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Landing clickHandler={this.landingClickHandler} />} />
-          <Route path='quiz' element={<Quiz finishCallback={this.landingClickHandler}/>} />
+          <Route path='/' element={<Landing />} />
+          <Route path='quiz' element={<WrappedQuiz finishCallback={this.calculateResult.bind(this)}/>} />
           <Route path='result' element={this.state.plane ? <Result plane={this.state.plane}/> : <NoPlane />} />
           <Route path='analytics' element={<Analytics />} />
           

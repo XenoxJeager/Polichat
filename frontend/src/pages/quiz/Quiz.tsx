@@ -1,10 +1,12 @@
 import axios from "axios";
 import React from "react";
+import { NavigateFunction, useNavigate } from "react-router";
 import { AnswerButton, NeutralButton } from "./components/AnswerButton";
 import { normalizeQuestions, SelectableWeightedQuestion, Weight, WeightedQuestion } from "./questions";
 
 interface QuizProps {
     finishCallback: (plane: Plane) => void;
+    navigate?: NavigateFunction;
 }
 
 enum WindowState {
@@ -33,7 +35,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
             index: 0
         }
 
-        this.handleClick = this.handleClick.bind(this);
+        this.updatePlane = this.updatePlane.bind(this);
     }
 
     componentDidMount() {
@@ -75,7 +77,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
             .then((reason) => {});
     }
 
-    handleClick(weight: Weight) {
+    updatePlane(weight: Weight) {
         const func = (weight: Weight, mult: number) => {
             this.plane.x += weight.weightX * mult;
             this.plane.y += weight.weightY * mult;
@@ -99,7 +101,8 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
 
         if (nextIndex >= this.state.normalizedQuestions.length) {
             // we have reached the end of the questions
-            this.props.finishCallback({x: this.plane.x, y: this.plane.y});
+            this.props.finishCallback(this.plane);
+            (this.props.navigate)!("/result");
         } else {
             // we go to the next question
             this.setState({index: nextIndex});
@@ -134,11 +137,11 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
 
                     <div className="justify-center w-full">
                         <div>
-                            <AnswerButton text="Strongly Agree" weight={currentQuestion.weights[0]} onClick={this.handleClick} />
+                            <AnswerButton text="Strongly Agree" weight={currentQuestion.weights[0]} onClick={this.updatePlane} />
                         </div>
 
                         <div>
-                            <AnswerButton text="Agree" weight={currentQuestion.weights[1]} onClick={this.handleClick} />
+                            <AnswerButton text="Agree" weight={currentQuestion.weights[1]} onClick={this.updatePlane} />
                         </div>
 
                         <div>
@@ -146,11 +149,11 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                         </div>
 
                         <div>
-                            <AnswerButton text="Disagree" weight={currentQuestion.weights[2]} onClick={this.handleClick} />
+                            <AnswerButton text="Disagree" weight={currentQuestion.weights[2]} onClick={this.updatePlane} />
                         </div>
                         
                         <div>
-                            <AnswerButton text="Strongly Disagree" weight={currentQuestion.weights[3]} onClick={this.handleClick} />
+                            <AnswerButton text="Strongly Disagree" weight={currentQuestion.weights[3]} onClick={this.updatePlane} />
                         </div>
                     </div>
                 </div>
@@ -182,3 +185,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
         }
     }
 }
+
+export const WrappedQuiz = (props: QuizProps) => {
+    return <Quiz {...props} navigate={useNavigate()}/>
+};

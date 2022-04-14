@@ -1,19 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface LandingProps {
-    clickHandler: () => void;
-}
-
 interface LandingState {
     imageIndex: number;
 }
 
-export default class Landing extends React.Component<LandingProps, LandingState> {
+export default class Landing extends React.Component<{}, LandingState> {
     interval: NodeJS.Timer | null;
     images: string[];
 
-    constructor(props: LandingProps) {
+    constructor(props: {}) {
         super(props);
         this.state = {
             imageIndex: 0
