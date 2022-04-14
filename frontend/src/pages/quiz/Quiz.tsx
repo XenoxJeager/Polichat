@@ -159,8 +159,8 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                 </div>
 
                 <div>
-                    <button onClick={this.tryPreviousQuestion.bind(this)}>Previous</button>
-                    <button onClick={this.tryNextQuestion.bind(this)}>Next</button>
+                    <button onClick={this.tryPreviousQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-l">Prev</button>
+                    <button onClick={this.tryNextQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r">Next</button>
                 </div>
             </div>
         );
