@@ -1,1 +1,6 @@
 frontend/node_modules
+backend/packages
+backend/.idea
+backend/.vs
+backend/bin
+backend/docs
