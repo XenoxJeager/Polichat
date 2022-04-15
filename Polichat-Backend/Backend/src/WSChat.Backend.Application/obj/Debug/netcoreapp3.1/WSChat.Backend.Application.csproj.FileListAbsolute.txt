@@ -1,0 +1,13 @@
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\bin\Debug\netcoreapp3.1\WSChat.Backend.Application.deps.json
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\bin\Debug\netcoreapp3.1\WSChat.Backend.Application.dll
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\bin\Debug\netcoreapp3.1\WSChat.Backend.Application.pdb
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\bin\Debug\netcoreapp3.1\WSChat.Backend.Domain.dll
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\bin\Debug\netcoreapp3.1\WSChat.Backend.Domain.pdb
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\obj\Debug\netcoreapp3.1\WSChat.Backend.Application.csproj.AssemblyReference.cache
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\obj\Debug\netcoreapp3.1\WSChat.Backend.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\obj\Debug\netcoreapp3.1\WSChat.Backend.Application.AssemblyInfoInputs.cache
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\obj\Debug\netcoreapp3.1\WSChat.Backend.Application.AssemblyInfo.cs
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\obj\Debug\netcoreapp3.1\WSChat.Backend.Application.csproj.CoreCompileInputs.cache
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\obj\Debug\netcoreapp3.1\WSChat.Backend.Application.csproj.CopyComplete
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\obj\Debug\netcoreapp3.1\WSChat.Backend.Application.dll
+C:\Users\xenia\Documents\Spengergasse\Schule_2122\Polichat\WSChat-Dev\Backend\src\WSChat.Backend.Application\obj\Debug\netcoreapp3.1\WSChat.Backend.Application.pdb
