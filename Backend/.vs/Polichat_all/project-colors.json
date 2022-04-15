@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "50224e6b-ca61-4621-b2f7-c7eec8b3d461": {
+      "ProjectGuid": "50224e6b-ca61-4621-b2f7-c7eec8b3d461",
+      "DisplayName": "WSChat.Backend.Application",
+      "ColorIndex": 0
+    },
+    "5602cfc9-0014-48f1-a67d-40160c8caa41": {
+      "ProjectGuid": "5602cfc9-0014-48f1-a67d-40160c8caa41",
+      "DisplayName": "Polichat_Backend",
+      "ColorIndex": 1
+    },
+    "7fe86109-6504-4604-b275-2a20469b2fe7": {
+      "ProjectGuid": "7fe86109-6504-4604-b275-2a20469b2fe7",
+      "DisplayName": "WSChat.Backend.Domain",
+      "ColorIndex": 2
+    },
+    "fb553498-82ee-41d7-831e-29581e6f4485": {
+      "ProjectGuid": "fb553498-82ee-41d7-831e-29581e6f4485",
+      "DisplayName": "WSChat.Backend.Lib.ChatWebSocket",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
