@@ -136,7 +136,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                         <p>{this.plane.x.toFixed(3)} | {this.plane.y.toFixed(3)}</p>
                     </div>
 
-                    <div className="justify-center w-full">
+                    <div className="justify-center w-full m-20">
                         <div>
                             <AnswerButton text="Strongly Agree" weight={currentQuestion.weights[0]} onClick={this.updatePlane} />
                         </div>
@@ -160,8 +160,8 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                 </div>
 
                 <div>
-                    <button onClick={this.tryPreviousQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-l">Prev</button>
-                    <button onClick={this.tryNextQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r">Next</button>
+                    <button onClick={this.tryPreviousQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-l-full">Prev</button>
+                    <button onClick={this.tryNextQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-r-full">Next</button>
                 </div>
             </div>
         );
