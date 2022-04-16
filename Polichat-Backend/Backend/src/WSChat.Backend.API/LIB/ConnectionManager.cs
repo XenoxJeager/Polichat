@@ -51,5 +51,10 @@ namespace Polichat_Backend
         {
             return _connections.FirstOrDefault(x => x.Value == (WebSocket)socket).Key.Id;
         }
+
+        public ChatUser GetChat(IDisposable socket)
+        {
+            return _connections.FirstOrDefault(x => x.Value == (WebSocket)socket).Key;
+        }
     }
 }

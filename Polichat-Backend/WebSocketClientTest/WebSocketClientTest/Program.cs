@@ -8,14 +8,15 @@ namespace WebSocketClientTest
     {
         public static void Main(string[] args)
         {
-            using (WebSocket ws = new WebSocket("ws://localhost:28556/ws"))
+            using (WebSocket ws = new WebSocket("ws://localhost:3000/ws"))
             {
                 int x = 0;
-                while (x !=2)
+                ws.OnMessage += Ws_OnMessage;
+                ws.Connect();
+                while (true)
                     
                 {
-                    ws.OnMessage += Ws_OnMessage;
-                    ws.Connect();
+                    
                     
                     var a = Console.ReadLine();
                     ws.Send(a);

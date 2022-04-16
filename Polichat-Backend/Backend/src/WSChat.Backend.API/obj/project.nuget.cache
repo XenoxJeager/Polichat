@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RR1hSMoWJTUp9JYg7u6NT33XLqFqHD8rK/nLR+JmBCbooXZkuLHuB/IomiIC5nQf+ld/bcfot0Cs4W3Z+ypcKQ==",
+  "dgSpecHash": "RLjaVOs5SX3J4Ppe3CmnwqoII8QMDs7luxKZ+kruZCgOFtuObNaP3FsRXJwGqB3k+gzY9RW+OJ7ez68k8m+ygg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
+  "projectFilePath": "C:\\Users\\xenia\\Documents\\Spengergasse\\Schule_2122\\Polichat_fin\\Polichat-Backend\\Backend\\src\\WSChat.Backend.API\\Polichat_Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\xenia\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\xenia\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",

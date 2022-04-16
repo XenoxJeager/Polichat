@@ -47,12 +47,18 @@ namespace Polichat_Backend
             await Send(Connections.GetSocketById(id), message);
         }
 
-        public async Task SendMessageToAll(string message)
+        public async Task SendMessageToAll(string message,WebSocket s)
         {
+            ChatUser sender = Connections.GetChat(s);
+            
             foreach (var connection in Connections.GetAllConnections())
             {
+                if (sender.Room == connection.Key.Room)
+                {
+                    await Send(connection.Value, message);
+                    
+                }
                 
-                await Send(connection.Value, message);
             }
         }
 

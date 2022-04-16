@@ -21,14 +21,14 @@ namespace Polichat_Backend
             {
                 await base.OnConnected(socket);
                 var sid = Connections.GetId(socket);
-                await SendMessageToAll($"{sid} just joined the {Connections.GetRoomID(socket)} Chatroom remain civil !!");
+                await SendMessageToAll($"{sid} just joined the {Connections.GetRoomID(socket)} Chatroom remain civil !!",socket);
             }
 
             public override async Task Receive(WebSocket socket, WebSocketReceiveResult result, byte[] buffer)
             {
                 var idSocket = Connections.GetId(socket);
                 var message = $"{idSocket} said:{Encoding.UTF8.GetString(buffer, 0, result.Count)}";
-                await SendMessageToAll(message);
+                await SendMessageToAll(message,socket);
             }
         }
     }
