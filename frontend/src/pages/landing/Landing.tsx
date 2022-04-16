@@ -50,7 +50,7 @@ export default class Landing extends React.Component<{}, LandingState> {
     
                     <Link to="quiz">
                         <button 
-                           className="bg-blue-500 text-white border-b-[7px] border-x-[5px] border-blue-700 font-bold py-3.5 px-8 border-blue-700 rounded
+                           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-10 rounded-full
                                     text-xl
                                     hover:bg-blue-500  hover:border-blue-600 
                                     active:border-b-[4px] active:border-x-[3px] active:mt-[2px]  " // abstand matters!!!
