@@ -130,9 +130,9 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
 
         return (
             <div className="flex flex-col items-center justify-center h-screen">
-                <div className="ml-6">
-                    <div className="mb-3">
-                        <h1 className="text-2xl">{text}</h1>
+                <div className="ml-7">
+                    <div className="mb-3 text-center">
+                        <h1 className="text-2xl ">{text}</h1>
                         <p>{this.plane.x.toFixed(3)} | {this.plane.y.toFixed(3)}</p>
                     </div>
                     
@@ -163,8 +163,8 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                 </div>
 
                 <div className="justify-center flex">
-                    <button onClick={this.tryPreviousQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-l-full">Prev</button>
-                    <button onClick={this.tryNextQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-r-full">Next</button>
+                    <button onClick={this.tryPreviousQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-l">Prev</button>
+                    <button onClick={this.tryNextQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-r">Next</button>
                 </div>
             </div>
         );
