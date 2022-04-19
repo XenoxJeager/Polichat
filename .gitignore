@@ -9,4 +9,5 @@ backend/docs
 *.dll
 *.cache
 
-backend/WebSocketClientTest/obj
+obj
+bin
