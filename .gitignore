@@ -4,3 +4,9 @@ backend/.idea
 backend/.vs
 backend/bin
 backend/docs
+
+*.exe
+*.dll
+*.cache
+
+backend/WebSocketClientTest/obj
