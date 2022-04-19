@@ -130,36 +130,39 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
 
         return (
             <div className="flex flex-col items-center justify-center h-screen">
-                <div>
+                <div className="ml-6">
                     <div className="mb-3">
                         <h1 className="text-2xl">{text}</h1>
                         <p>{this.plane.x.toFixed(3)} | {this.plane.y.toFixed(3)}</p>
                     </div>
+                    
+                    <div className="flex items-center justify-center" > 
+                        <div className="m-10 inline-flex shadow-md focus:shadow-lg">
+                            <div className="rounded-l inline-block px-8 py-4 bg-green-600 text-white font-medium text-s leading-tight uppercase hover:bg-green-500 transition duration-150 ease-in-out">
+                                <AnswerButton text="Strongly Agree" weight={currentQuestion.weights[0]} onClick={this.updatePlane} />
+                            </div>
 
-                    <div className="justify-center w-full m-20">
-                        <div>
-                            <AnswerButton text="Strongly Agree" weight={currentQuestion.weights[0]} onClick={this.updatePlane} />
-                        </div>
+                            <div className="inline-block px-8 py-4 bg-green-500 text-white font-medium text-s leading-tight uppercase hover:bg-green-400 transition duration-150 ease-in-out">
+                                <AnswerButton text="Agree" weight={currentQuestion.weights[1]} onClick={this.updatePlane} />
+                            </div>
 
-                        <div>
-                            <AnswerButton text="Agree" weight={currentQuestion.weights[1]} onClick={this.updatePlane} />
-                        </div>
+                            <div className="inline-block px-7 py-4 bg-white-500 text-black font-medium text-s leading-tight uppercase hover:bg-gray-100 transition duration-150 ease-in-out">
+                                <AnswerButton text="Neutral/Skip" weight={{weightX: 0, weightY: 0}} onClick={this.updatePlane}/>
+                            </div>
 
-                        <div>
-                            <AnswerButton text="Neutral/Skip" weight={{weightX: 0, weightY: 0}} onClick={this.updatePlane}/>
-                        </div>
-
-                        <div>
-                            <AnswerButton text="Disagree" weight={currentQuestion.weights[2]} onClick={this.updatePlane} />
-                        </div>
+                            <div className="inline-block px-6 py-4 bg-red-500 text-white font-medium text-s leading-tight uppercase hover:bg-red-400 transition duration-150 ease-in-out">
+                                <AnswerButton text="Disagree" weight={currentQuestion.weights[2]} onClick={this.updatePlane} />
+                            </div>
                         
-                        <div>
-                            <AnswerButton text="Strongly Disagree" weight={currentQuestion.weights[3]} onClick={this.updatePlane} />
+                            <div className="rounded-r inline-block px-6 py-4 bg-red-600 text-white font-medium text-s leading-tight uppercase hover:bg-red-500 transition duration-150 ease-in-out">
+                                <AnswerButton text="Strongly Disagree" weight={currentQuestion.weights[3]} onClick={this.updatePlane} />
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
-                <div>
+                <div className="justify-center flex">
                     <button onClick={this.tryPreviousQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-l-full">Prev</button>
                     <button onClick={this.tryNextQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-r-full">Next</button>
                 </div>
