@@ -133,7 +133,6 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                 <div className="ml-7">
                     <div className="mb-3 text-center">
                         <h1 className="text-2xl ">{text}</h1>
-                        <p>{this.plane.x.toFixed(3)} | {this.plane.y.toFixed(3)}</p>
                     </div>
                     
                     <div className="flex items-center justify-center" > 
