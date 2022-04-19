@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import car from '../../imgs/compass.png'; // gives image path
+
 
 interface LandingState {
     imageIndex: number;
@@ -46,7 +48,7 @@ export default class Landing extends React.Component<{}, LandingState> {
                     <h1 className="  text-7xl font-bold ">{"Polichat"}</h1>
                     <p className="   text-2xl font-bold text-stone-500 ">Where do <b><i>you</i></b> stand?</p>
                 </div>
-                
+                    <img src={car} alt="image" className="m-10 h-[500px]"/>
     
                     <Link to="quiz">
                         <button 
