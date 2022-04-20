@@ -15,7 +15,8 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        
+
+        builder.Services.AddCors();
         builder.Services.AddControllers();
         builder.Services.AddWebSocketManager();
         AddWebSockets(builder.Services);
