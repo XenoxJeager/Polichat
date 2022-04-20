@@ -2,8 +2,8 @@ CREATE DATABASE polichatDB;
 SHOW DATABASES;
 USE polichatDB;
 
-CREATE TABLE IF NOT EXISTS QUESTIONS(
-Question CHAR(255),
+CREATE TABLE IF NOT EXISTS Questions (
+Text CHAR(255),
 Type CHAR(255),
 P_Strongly_Agree_X DOUBLE(16,2),
 P_Strongly_Agree_Y DOUBLE(16,2),
@@ -11,8 +11,8 @@ P_Agree_X DOUBLE(16,2),
 P_Agree_Y DOUBLE(16,2), 
 P_Disagree_X DOUBLE(16,2),
 P_Disagree_Y DOUBLE(16,2),
-P_Stronly_Disagree_X DOUBLE(16,2),
-P_Stronly_Disagree_Y DOUBLE(16,2),
+P_Strongly_Disagree_X DOUBLE(16,2),
+P_Strongly_Disagree_Y DOUBLE(16,2),
 PRIMARY KEY(Question)
 );
 
