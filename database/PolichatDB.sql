@@ -1,22 +1,21 @@
-CREATE DATABASE polichatDB;
-SHOW DATABASES;
-USE polichatDB;
+CREATE DATABASE polichat;
+USE polichat;
 
 CREATE TABLE IF NOT EXISTS Questions (
-Text CHAR(255),
-Type CHAR(255),
-P_Strongly_Agree_X DOUBLE(16,2),
-P_Strongly_Agree_Y DOUBLE(16,2),
-P_Agree_X DOUBLE(16,2),
-P_Agree_Y DOUBLE(16,2), 
-P_Disagree_X DOUBLE(16,2),
-P_Disagree_Y DOUBLE(16,2),
-P_Strongly_Disagree_X DOUBLE(16,2),
-P_Strongly_Disagree_Y DOUBLE(16,2),
-PRIMARY KEY(Question)
+    Text CHAR(255),
+    Type CHAR(255),
+    P_Strongly_Agree_X DOUBLE(16,2),
+    P_Strongly_Agree_Y DOUBLE(16,2),
+    P_Agree_X DOUBLE(16,2),
+    P_Agree_Y DOUBLE(16,2),
+    P_Disagree_X DOUBLE(16,2),
+    P_Disagree_Y DOUBLE(16,2),
+    P_Strongly_Disagree_X DOUBLE(16,2),
+    P_Strongly_Disagree_Y DOUBLE(16,2),
+    PRIMARY KEY(Text)
 );
 
-INSERT INTO QUESTIONS (Question, Type, P_Strongly_Agree_X,P_Strongly_Agree_Y,P_Agree_X,P_Agree_Y,P_Disagree_X,P_Disagree_Y,P_Stronly_Disagree_X,P_Stronly_Disagree_Y)VALUES
+INSERT INTO QUESTIONS (Text, Type, P_Strongly_Agree_X,P_Strongly_Agree_Y,P_Agree_X,P_Agree_Y,P_Disagree_X,P_Disagree_Y,P_Strongly_Disagree_X,P_Strongly_Disagree_Y)VALUES
 #security/freedom 
 ('If you have nothing to hide, then you should not care about the government having access to your communications ','security/freedom',0.05,0.2,0.024,0.12,-0.04,-0.12,-0.06,-0.19),
 ('Government surveillance is necessary in the modern world','security/freedom',0.0,0.25,0.0,0.14,0.0,-0.15,0.0,-0.2),
