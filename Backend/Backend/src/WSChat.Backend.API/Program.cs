@@ -13,6 +13,7 @@ namespace Polichat_Backend
     
      public class Program
     {
+        
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
