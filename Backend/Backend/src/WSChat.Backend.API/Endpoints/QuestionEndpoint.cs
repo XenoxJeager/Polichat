@@ -6,11 +6,11 @@ using Polichat_Backend.Database;
 namespace Polichat_Backend.Endpoints;
 
 [ApiController]
-public class Questions
+public class QuestionEndpoint
 {
     private Context _context;
     
-    public Questions(Context context)
+    public QuestionEndpoint(Context context)
     {
         _context = context;
     }
@@ -19,6 +19,8 @@ public class Questions
     [HttpGet]
     public async Task<Question[]> GetQuestions()
     {
-        return _context.Questions.Take(20).ToArray();
+        var questions = _context.Questions.OrderBy(question => question.Text);
+        var res = questions.Take(20);
+        return res.ToArray();
     }
 }
