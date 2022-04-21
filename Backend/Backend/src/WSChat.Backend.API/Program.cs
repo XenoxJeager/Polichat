@@ -20,10 +20,12 @@ public class Program
         builder.Services.AddControllers();
         builder.Services.AddWebSocketManager();
         AddWebSockets(builder.Services);
+
+        var connectionString = "Server=127.0.0.1;Database=polichat;Uid=root;";
         
         builder.Services.AddDbContext<Context>(
-            optionsBuilder => optionsBuilder.UseSqlServer(
-                "Server=localhost;Port=3306;Database=polichat;Uid=root;"
+            optionsBuilder => optionsBuilder.UseMySql(
+                    connectionString, ServerVersion.AutoDetect(connectionString)
                 )
             );
 
