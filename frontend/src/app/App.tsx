@@ -22,7 +22,7 @@ export default class App extends React.Component<{}, AppState> {
     this.state = {};
   }
 
-  calculateResult(plane: Plane) {
+  setPlane(plane: Plane) {
     this.setState({
       plane: plane
     });
@@ -33,7 +33,7 @@ export default class App extends React.Component<{}, AppState> {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='quiz' element={<WrappedQuiz finishCallback={this.calculateResult.bind(this)}/>} />
+          <Route path='quiz' element={<WrappedQuiz finishCallback={this.setPlane.bind(this)}/>} />
           <Route path='result' element={this.state.plane ? <Result plane={this.state.plane}/> : <NoPlane />} />
           <Route path='analytics' element={<Analytics />} />
           <Route path='signIn' element={<WrappedSignIn />} />
