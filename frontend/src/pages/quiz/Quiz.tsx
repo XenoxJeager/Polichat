@@ -108,17 +108,17 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                         <h1 className="text-2xl "><b>{text}</b></h1>
                     </div>
                     
-                    <div className="flex items-center justify-center p-4" > 
-                        <AnswerButton text="Strongly Agree" styling="rounded-l bg-green-600 hover:bg-green-500" weight={currentQuestion.weights[0]} onClick={this.updatePlane} />
-                        <AnswerButton text="Agree" styling="bg-green-500 hover:bg-green-400" weight={currentQuestion.weights[1]} onClick={this.updatePlane} />
+                    <div className="lg:flex items-center justify-center lg:p-4 grid  v-screen" > 
+                        <AnswerButton text="Strongly Agree" styling="lg:rounded-l bg-green-600 hover:bg-green-500 px-10" weight={currentQuestion.weights[0]} onClick={this.updatePlane} />
+                        <AnswerButton text="Agree" styling="bg-green-500 hover:bg-green-400 px-11" weight={currentQuestion.weights[1]} onClick={this.updatePlane} />
                         <AnswerButton text="Neutral/Skip" styling="text-black bg-white-500 hover:bg-gray-100" weight={{weightX: 0, weightY: 0}} onClick={this.updatePlane}/>
                         <AnswerButton text="Disagree" styling="bg-red-500 hover:bg-red-400" weight={currentQuestion.weights[2]} onClick={this.updatePlane} />
-                        <AnswerButton text="Strongly Disagree" styling="rounded-r bg-red-600 hover:bg-red-500" weight={currentQuestion.weights[3]} onClick={this.updatePlane} />
+                        <AnswerButton text="Strongly Disagree" styling="lg:rounded-r  bg-red-600 hover:bg-red-500" weight={currentQuestion.weights[3]} onClick={this.updatePlane} />
                     </div>
 
                 </div>
 
-                <div className="justify-center flex">
+                <div className="flex justify-center items-center lg:m-0 m-2.5">
                     <button onClick={this.tryPreviousQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-l">Prev</button>
                     <button onClick={this.tryNextQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-r">Next</button>
                 </div>
