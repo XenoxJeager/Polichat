@@ -20,13 +20,13 @@ interface QuizState {
     normalizedQuestions?: SelectableWeightedQuestion[] | undefined;
 }
 
-export class Plane {
-    x: number = 0;
-    y: number = 0;
+export interface Plane {
+    x: number;
+    y: number;
 }
 
 export class Quiz extends React.Component<QuizProps, QuizState> {
-    plane: Plane = new Plane();
+    plane: Plane = { x: 0, y: 0};
 
     constructor(props: QuizProps) {
         super(props);
@@ -108,28 +108,12 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
                         <h1 className="text-2xl "><b>{text}</b></h1>
                     </div>
                     
-                    <div className="flex items-center justify-center" > 
-                        <div className="m-10 inline-flex shadow-md focus:shadow-lg">
-                            <div className="rounded-l inline-block px-8 py-4 bg-green-600 text-white font-medium text-s leading-tight uppercase hover:bg-green-500 transition duration-150 ease-in-out">
-                                <AnswerButton text="Strongly Agree" weight={currentQuestion.weights[0]} onClick={this.updatePlane} />
-                            </div>
-
-                            <div className="inline-block px-8 py-4 bg-green-500 text-white font-medium text-s leading-tight uppercase hover:bg-green-400 transition duration-150 ease-in-out">
-                                <AnswerButton text="Agree" weight={currentQuestion.weights[1]} onClick={this.updatePlane} />
-                            </div>
-
-                            <div className="inline-block px-7 py-4 bg-white-500 text-black font-medium text-s leading-tight uppercase hover:bg-gray-100 transition duration-150 ease-in-out">
-                                <AnswerButton text="Neutral/Skip" weight={{weightX: 0, weightY: 0}} onClick={this.updatePlane}/>
-                            </div>
-
-                            <div className="inline-block px-6 py-4 bg-red-500 text-white font-medium text-s leading-tight uppercase hover:bg-red-400 transition duration-150 ease-in-out">
-                                <AnswerButton text="Disagree" weight={currentQuestion.weights[2]} onClick={this.updatePlane} />
-                            </div>
-                        
-                            <div className="rounded-r inline-block px-6 py-4 bg-red-600 text-white font-medium text-s leading-tight uppercase hover:bg-red-500 transition duration-150 ease-in-out">
-                                <AnswerButton text="Strongly Disagree" weight={currentQuestion.weights[3]} onClick={this.updatePlane} />
-                            </div>
-                        </div>
+                    <div className="flex items-center justify-center p-4" > 
+                        <AnswerButton text="Strongly Agree" styling="rounded-l bg-green-600 hover:bg-green-500" weight={currentQuestion.weights[0]} onClick={this.updatePlane} />
+                        <AnswerButton text="Agree" styling="bg-green-500 hover:bg-green-400" weight={currentQuestion.weights[1]} onClick={this.updatePlane} />
+                        <AnswerButton text="Neutral/Skip" styling="text-black bg-white-500 hover:bg-gray-100" weight={{weightX: 0, weightY: 0}} onClick={this.updatePlane}/>
+                        <AnswerButton text="Disagree" styling="bg-red-500 hover:bg-red-400" weight={currentQuestion.weights[2]} onClick={this.updatePlane} />
+                        <AnswerButton text="Strongly Disagree" styling="rounded-r bg-red-600 hover:bg-red-500" weight={currentQuestion.weights[3]} onClick={this.updatePlane} />
                     </div>
 
                 </div>
