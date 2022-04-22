@@ -70,15 +70,15 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
         });
         */
         
-        axios.get("localhost:3001/questions")
-            .catch((response) => {
+        axios.get("http://localhost:3001/questions")
+            .then((response) => {
                 const questions = response.data as WeightedQuestion[];
                 this.setState({
                     windowState: WindowState.Active,
                     normalizedQuestions: normalizeQuestions(questions)
                 });
             })
-            .then((reason) => {});
+            .catch((reason) => {});
     }
 
     updatePlane(weight: Weight) {
