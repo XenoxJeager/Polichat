@@ -39,6 +39,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
     }
 
     componentDidMount() {
+        /*
         const rndQuestion = (text: string):SelectableWeightedQuestion => {
             let weights: Weight[] = Array(4);
             
@@ -67,12 +68,15 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
             normalizedQuestions: normalizeQuestions(questions),
             windowState: WindowState.Active
         });
-        return;
+        */
         
-        axios.get("localhost:3000/questions")
+        axios.get("localhost:3001/questions")
             .catch((response) => {
                 const questions = response.data as WeightedQuestion[];
-                this.setState({normalizedQuestions: normalizeQuestions(questions)});
+                this.setState({
+                    windowState: WindowState.Active,
+                    normalizedQuestions: normalizeQuestions(questions)
+                });
             })
             .then((reason) => {});
     }
