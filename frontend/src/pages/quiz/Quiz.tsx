@@ -105,7 +105,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
             <div className="flex flex-col items-center justify-center h-screen">
                 <div>
                     <div className="mb-3 text-center">
-                        <h1 className="text-2xl ">{text}</h1>
+                        <h1 className="text-2xl "><b>{text}</b></h1>
                     </div>
                     
                     <div className="flex items-center justify-center" > 
