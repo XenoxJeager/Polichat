@@ -17,7 +17,7 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddCors();
+        builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder => policyBuilder.AllowAnyOrigin()));
         builder.Services.AddControllers();
         builder.Services.AddWebSocketManager();
         AddWebSockets(builder.Services);
@@ -35,7 +35,7 @@ public class Program
             app.UseDeveloperExceptionPage();
 
         app.MapControllers();
-        
+        app.UseCors();
         app.Map(
             "/ws", 
             x => x.UseMiddleware<SocketMiddleware>(app.Services.GetService<SocketMessageHandler>())
