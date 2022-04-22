@@ -38,38 +38,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
         this.updatePlane = this.updatePlane.bind(this);
     }
 
-    componentDidMount() {
-        /*
-        const rndQuestion = (text: string):SelectableWeightedQuestion => {
-            let weights: Weight[] = Array(4);
-            
-            for(let i = 0; i <= 3; i++) {
-                let mult = i > 1 ? -1 : 1;
-                weights[i] = {
-                    weightX: Math.random() * mult,
-                    weightY: Math.random() * mult
-                }
-            }
-
-            return {
-                text: text,
-                weights: weights,
-                selectedWeight: { weightX: 0, weightY: 0}
-            };
-        }
-
-        let amount = 20;
-        let questions: SelectableWeightedQuestion[] = Array(amount);
-
-        for(let i = 0; i < amount; i++)
-            questions[i] = rndQuestion("Question " + i)
-
-        this.setState({
-            normalizedQuestions: normalizeQuestions(questions),
-            windowState: WindowState.Active
-        });
-        */
-        
+    componentDidMount() {    
         axios.get("http://localhost:3001/questions")
             .then((response) => {
                 const questions = response.data as WeightedQuestion[];
