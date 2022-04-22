@@ -11,7 +11,7 @@ using Polichat_Backend.LIB;
 
 namespace Polichat_Backend;
 
-public class Program
+public static class Program
 {
     public static void Main(string[] args)
     {
