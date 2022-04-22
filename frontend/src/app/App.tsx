@@ -8,6 +8,7 @@ import './App.css';
 import { NoPlane } from '../pages/errors/noPlane/NoPlane';
 import { NotFound } from '../pages/errors/notFound/NotFound';
 import { Analytics } from '../pages/analytics/Analytics';
+import { WrappedSignIn } from '../pages/signIn/SignIn';
 
 interface AppState {
   plane?: Plane
@@ -35,7 +36,7 @@ export default class App extends React.Component<{}, AppState> {
           <Route path='quiz' element={<WrappedQuiz finishCallback={this.calculateResult.bind(this)}/>} />
           <Route path='result' element={this.state.plane ? <Result plane={this.state.plane}/> : <NoPlane />} />
           <Route path='analytics' element={<Analytics />} />
-          
+          <Route path='signIn' element={<WrappedSignIn />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
