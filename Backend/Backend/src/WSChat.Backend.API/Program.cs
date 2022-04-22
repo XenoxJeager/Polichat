@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -21,8 +22,7 @@ public class Program
         builder.Services.AddWebSocketManager();
         AddWebSockets(builder.Services);
 
-        var connectionString = "Server=127.0.0.1;Database=polichat;Uid=root;";
-        
+        const string connectionString = "Server=127.0.0.1;Database=polichat;Uid=root;";
         builder.Services.AddDbContext<Context>(
             optionsBuilder => optionsBuilder.UseMySql(
                     connectionString, ServerVersion.AutoDetect(connectionString)
@@ -32,10 +32,8 @@ public class Program
         var app = builder.Build();
         
         if (builder.Environment.IsDevelopment())
-        {
             app.UseDeveloperExceptionPage();
-        }
-        
+
         app.MapControllers();
         
         app.Map(
