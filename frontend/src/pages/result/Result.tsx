@@ -1,4 +1,6 @@
+import axios from "axios";
 import React from "react";
+import { getUrl } from "../../config/Constants";
 import { Plane } from "../quiz/Quiz";
 
 interface ResultProps {
@@ -9,6 +11,18 @@ export default class Result extends React.Component<ResultProps> {
     constructor(props: ResultProps) {
         super(props);
     }
+
+    componentDidMount() {    
+        axios.post(getUrl("/evaluation"), 
+        {
+            x: this.props.plane.x,
+            y: this.props.plane.y
+        })
+        .then((response) => {
+            
+        });
+    }
+
 
     render(): React.ReactNode {
         return (
