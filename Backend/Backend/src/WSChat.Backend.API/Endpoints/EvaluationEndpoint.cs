@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Polichat_Backend.Database;
@@ -38,20 +35,20 @@ public class Fields
     public string IdeologyDescription { get; set; }
 }
 
+public record IdeologyInfo(string Name, string Description);
 
 [ApiController]
 public class EvaluationEndpoint
 {
     bool inRange(double value, double min, double max) => ((value - max)*(value - min) <= 0.0);
     
-    [Microsoft.AspNetCore.Mvc.Route("/result")]
+    [Route("/evaluation")]
     [HttpGet]
-    public async Task<IDictionary<string, string>> evaluation(double x, double y)
+    public async Task<IdeologyInfo> Evaluation(double x, double y)
     {
         //magic maker 20000
         bool inRange(double value, double min, double max) => ((value - max) * (value - min) <= 0.0);
 
-        IDictionary<string, string> returnMe = new Dictionary<string, string>();
         IDictionary<int, Fields> IdeologyDictionary = new Dictionary<int, Fields>();
 
         IdeologyDictionary.Add(0,
@@ -202,20 +199,14 @@ public class EvaluationEndpoint
             new Fields(0.72, -1.0, 1.0, -0.72, "Anarcho-Capitalism",
                 "Anarcho-Capitalism (AnCap), also called Private Property Anarchy, Private Law Society,[5] and Rothbardianism,[6] as well a bunch of other names,[7] is a political ideology, as well as a theoretical social order, based around Classical Liberal conception of  property rights, individualism, and rejection of the state but lead to its logical conclusion, the elimination of it."));
 
-
-        foreach (var VARIABLE in IdeologyDictionary)
-        {
-            if (inRange(x, VARIABLE.Value.StartX, VARIABLE.Value.EndX) &&
-                inRange(y, VARIABLE.Value.StartY, VARIABLE.Value.EndY))
-            {
-                returnMe.Add(VARIABLE.Value.IdeologyName, VARIABLE.Value.IdeologyDescription);
-                Console.WriteLine();
-                Console.WriteLine(VARIABLE.Value.IdeologyName);
-                break;
-            }
-        }
-
-        return returnMe;
+        return (from Fields value in IdeologyDictionary.Values
+            where inRange(x,
+                      value.StartX,
+                      value.EndX) &&
+                  inRange(y,
+                      value.StartY,
+                      value.EndY)
+            select new IdeologyInfo(value.IdeologyName,
+                value.IdeologyDescription)).FirstOrDefault();
     }
 }
-
