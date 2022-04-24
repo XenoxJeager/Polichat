@@ -1,40 +1,70 @@
 import axios from "axios";
 import React from "react";
 import { getUrl } from "../../config/Constants";
-import { Plane } from "../quiz/Quiz";
-
+import { Vector } from "../quiz/Quiz";
 
 interface ResultProps {
-    plane: Plane;
+    vector: Vector;
 }
 
+interface IdeologyInfo {
+    name: string;
+    description: string;
+}
 
+enum WindowState {
+    Loading,
+    Active
+}
 
-export default class Result extends React.Component<ResultProps> {
+interface ResultState {
+    ideology?: IdeologyInfo;
+    state: WindowState;
+}
+
+export default class Result extends React.Component<ResultProps, ResultState> {
     constructor(props: ResultProps) {
         super(props);
-        
+
+        this.state = {
+            state: WindowState.Loading
+        };
     }
 
     componentDidMount() {    
-        axios.post("http://localhost:3001/evaluation",)
+        axios.get(getUrl(`/evaluation?x=${this.props.vector.x}&y=${this.props.vector.y}`))
         .then((response) => {
-           const returnedData = response.data;
+           const ideology = response.data as IdeologyInfo;
+
            this.setState({
-               ideologies : returnedData,
+               state: WindowState.Active,
+               ideology : ideology
            })
         })
         .catch((reason) => {});
     }
 
-
     render(): React.ReactNode {
-        const ideology = this.state.ideologies.text;
-        const description = this.state.ideologies.text;
+        switch(this.state.state) {
+            case (WindowState.Loading):
+                return this.renderLoading();
+            case (WindowState.Active):
+                return this.renderResult(); 
+        }
+    }
+
+    renderLoading(): React.ReactNode {
+        return null;
+    }   
+
+    renderResult(): React.ReactNode {
+        const name = this.state.ideology!.name;
+        const description = this.state.ideology!.description;
+
         return (
             <div>
-                <h1>Your Result is: {this.props.plane.x.toFixed(3)} | {this.props.plane.y.toFixed(3)}</h1>
-                <p>{ideology}</p>
+                <h1>Your Result is: {this.props.vector.x.toFixed(3)} | {this.props.vector.y.toFixed(3)}</h1>
+                <p>{name}</p>
                 <p>{description}</p>
             </div>
         );

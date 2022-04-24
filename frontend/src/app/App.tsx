@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Route, Router, Routes } from 'react-router';
 import Landing from '../pages/landing/Landing';
-import { Plane, WrappedQuiz } from '../pages/quiz/Quiz';
+import { Vector, WrappedQuiz } from '../pages/quiz/Quiz';
 import Result from '../pages/result/Result';
 import './App.css';
 import { NoPlane } from '../pages/errors/noPlane/NoPlane';
@@ -11,7 +11,7 @@ import { Analytics } from '../pages/analytics/Analytics';
 import { WrappedSignIn } from '../pages/signIn/SignIn';
 
 interface AppState {
-  plane?: Plane
+  vector?: Vector
 }
 
 export default class App extends React.Component<{}, AppState> {
@@ -22,9 +22,9 @@ export default class App extends React.Component<{}, AppState> {
     this.state = {};
   }
 
-  setPlane(plane: Plane) {
+  setPlane(vector: Vector) {
     this.setState({
-      plane: plane
+      vector: vector
     });
   }
 
@@ -34,7 +34,7 @@ export default class App extends React.Component<{}, AppState> {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='quiz' element={<WrappedQuiz finishCallback={this.setPlane.bind(this)}/>} />
-          <Route path='result' element={this.state.plane ? <Result plane={this.state.plane}/> : <NoPlane />} />
+          <Route path='result' element={this.state.vector ? <Result plane={this.state.vector}/> : <NoPlane />} />
           <Route path='analytics' element={<Analytics />} />
           <Route path='signIn' element={<WrappedSignIn />} />
           <Route path='*' element={<NotFound />} />
