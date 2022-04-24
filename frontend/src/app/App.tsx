@@ -41,18 +41,5 @@ export default class App extends React.Component<{}, AppState> {
         </Routes>
       </BrowserRouter>
     );
-
-    /*
-    const window = this.state.windowState;
-
-    switch (window) {
-      case WindowState.Landing:
-        return <Landing clickHandler={this.landingClickHandler.bind(this)}/>;
-      case WindowState.Quiz:
-        return <Quiz finishCallback={this.calculateResult.bind(this)}/>;
-      case WindowState.Result:
-        return this.state.plane ? <Result plane={this.state.plane}/> : <p>Plane is null</p>;
-    } 
-    */
   }
 }
