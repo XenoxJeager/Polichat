@@ -34,7 +34,7 @@ export default class App extends React.Component<{}, AppState> {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='quiz' element={<WrappedQuiz finishCallback={this.setPlane.bind(this)}/>} />
-          <Route path='result' element={this.state.vector ? <Result plane={this.state.vector}/> : <NoPlane />} />
+          <Route path='result' element={this.state.vector ? <Result vector={this.state.vector}/> : <NoPlane />} />
           <Route path='analytics' element={<Analytics />} />
           <Route path='signIn' element={<WrappedSignIn />} />
           <Route path='*' element={<NotFound />} />
