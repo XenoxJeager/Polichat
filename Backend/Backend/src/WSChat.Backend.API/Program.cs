@@ -36,6 +36,7 @@ public static class Program
 
         app.MapControllers();
         app.UseCors();
+        app.UseWebSockets();
         app.Map(
             "/ws", 
             x => x.UseMiddleware<SocketMiddleware>(app.Services.GetService<SocketMessageHandler>())
