@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { getUrl } from "../../config/Constants";
 import { Vector } from "../quiz/Quiz";
+import { Chat } from "./components/Chat";
 
 interface ResultProps {
     vector: Vector;
@@ -40,8 +41,7 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                state: WindowState.Active,
                ideology : ideology
            })
-        })
-        .catch((reason) => {});
+        });
     }
 
     render(): React.ReactNode {
@@ -66,6 +66,8 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                 <h1>Your Result is: {this.props.vector.x.toFixed(3)} | {this.props.vector.y.toFixed(3)}</h1>
                 <p>{name}</p>
                 <p>{description}</p>
+
+                <Chat vector={this.props.vector}/>
             </div>
         );
     }
