@@ -8,7 +8,7 @@ namespace WebSocketClientTest
     {
         public static void Main(string[] args)
         {
-            using (WebSocket ws = new WebSocket("ws://localhost:3000/ws?room_id=1"))
+            using (WebSocket ws = new WebSocket("ws://localhost:3001/ws?room_id=1"))
             {
                 int x = 0;
                 ws.OnMessage += Ws_OnMessage;
