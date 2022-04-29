@@ -7,6 +7,7 @@ namespace WebSocketClientTest
     internal class Program
     {
         public static void Main(string[] args)
+
         {
             using (WebSocket ws = new WebSocket("ws://localhost:3001/ws?room_id=1"))
             {
