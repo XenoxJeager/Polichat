@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS polichat;
 CREATE DATABASE polichat;
 USE polichat;
 
