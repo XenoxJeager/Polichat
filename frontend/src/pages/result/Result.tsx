@@ -70,16 +70,10 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                             <h1 className="text-4xl bold mb-5">{name}</h1>
                             <img className="w-3/4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Political_Compass_standard_model.svg/543px-Political_Compass_standard_model.svg.png"alt="political"></img>
                             <h1 className="italic">{description}</h1>                        
-                            </div>
                         </div>
-                    <div>
-                        <div className="mx-14 border-3 text-center  my-5 h-full ">
-                            <h1 className="text-3xl bold h-center">Chat with your comrades!</h1>
-                            <div className="border-t-3 h-full">     
-                            <Chat vector={this.props.vector}/>
-                           </div>
-                           <div className="border-t-3"></div>
-                        </div>
+                    </div>
+                    <div className="mx-14 my-5 text-center h-90 border-y-4 border-x-4">
+                    <h1 className="text-3xl bold ">Chat with your comrades!</h1>
                     </div>
                 </div>
             </div>
