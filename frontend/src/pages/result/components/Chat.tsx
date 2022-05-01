@@ -1,5 +1,4 @@
 import React from "react";
-import { getUrl } from "../../../config/Constants";
 import { Vector } from "../../quiz/Quiz";
 import { AdminChatMessage, ChatMessage, LocalChatMessage, RemoteChatMessage } from "./ChatMessage";
 
