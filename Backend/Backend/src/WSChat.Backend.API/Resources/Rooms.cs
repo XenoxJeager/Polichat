@@ -1,10 +1,9 @@
 ﻿namespace Polichat_Backend.Resources;
 
-public enum Rooms
+public enum Room
 {
-    Lib_Right,
-    Lib_Left,
-    Auth_Right,
-    Auth_Left,
-    Error_Room
+    LibRight,
+    LibLeft,
+    AuthRight,
+    AuthLeft
 }

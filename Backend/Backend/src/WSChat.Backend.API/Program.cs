@@ -13,10 +13,10 @@ public static class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
+        builder.Services.AddSingleton<UserSocketHandler>();
+        builder.Services.AddSingleton<WebSocketMiddleware>();
         builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder => policyBuilder.AllowAnyOrigin()));
         builder.Services.AddControllers();
-        builder.Services.AddWebSocketManager();
         AddWebSockets(builder.Services);
 
         const string connectionString = "Server=127.0.0.1;Database=polichat;Uid=root;";
@@ -36,7 +36,7 @@ public static class Program
         app.UseWebSockets();
         app.Map(
             "/ws", 
-            x => x.UseMiddleware<SocketMiddleware>(app.Services.GetService<SocketMessageHandler>())
+            x => x.UseMiddleware<WebSocketMiddleware>()
             );
 
         app.Run();
@@ -47,7 +47,7 @@ public static class Program
         services.AddTransient<ConnectionService>();
         
         foreach (var type in Assembly.GetEntryAssembly()!.ExportedTypes)
-            if (type.GetTypeInfo().BaseType == typeof(SocketHandler))
+            if (type.GetTypeInfo().BaseType == typeof(UserSocketHandler))
                 services.AddSingleton(type);
     }
 }
