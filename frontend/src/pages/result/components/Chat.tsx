@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEventHandler } from "react";
+import React from "react";
 import { Vector } from "../../quiz/Quiz";
 import { AdminChatMessage, ChatMessage, LocalChatMessage, RemoteChatMessage } from "./ChatMessage";
 
