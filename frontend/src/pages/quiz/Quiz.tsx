@@ -74,6 +74,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
 
         if(this.state.normalizedQuestions == null) return;
 
+        
         if (nextIndex >= this.state.normalizedQuestions.length) {
             // we have reached the end of the questions
             this.props.finishCallback(this.state.vector);
@@ -102,17 +103,20 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
 
         if(currentQuestion == null) return;
 
+        var questionNum = 1
         const text = currentQuestion.text;
 
         return (
             <div className="flex flex-col items-center justify-center h-screen">
                 <div>
                     <div className="mb-3 text-center">
+                        <h1 className="text-2xl"><b>{this.state.index+1} out of 20</b></h1>
+                        <br />
                         <h1 className="text-2xl "><b>{text}</b></h1>
                     </div>
                     
                     <div className="lg:flex items-center justify-center lg:p-4 grid  v-screen" > 
-                        <AnswerButton text="Strongly Agree" styling="lg:rounded-l bg-green-600 hover:bg-green-500 px-10" vector={currentQuestion.weights[0]} onClick={this.updatePlane} />
+                        <AnswerButton text="Strongly Agree" styling="lg:rounded-l bg-green-600 hover:bg-green-500 px-10" vector={currentQuestion.weights[0]} onClick={this.updatePlane}/>
                         <AnswerButton text="Agree" styling="bg-green-500 hover:bg-green-400 px-11" vector={currentQuestion.weights[1]} onClick={this.updatePlane} />
                         <AnswerButton text="Neutral/Skip" styling="text-black bg-white-500 hover:bg-gray-100" vector={{x: 0, y: 0}} onClick={this.updatePlane}/>
                         <AnswerButton text="Disagree" styling="bg-red-500 hover:bg-red-400" vector={currentQuestion.weights[2]} onClick={this.updatePlane} />

@@ -62,12 +62,16 @@ export default class Result extends React.Component<ResultProps, ResultState> {
         const description = this.state.ideology!.description;
 
         return (
-            <div>
-                <h1>Your Result is: {this.props.vector.x.toFixed(3)} | {this.props.vector.y.toFixed(3)}</h1>
-                <p>{name}</p>
-                <p>{description}</p>
+            // result page
+            <div className="p-40">
+                <h1 className="flex justify-center">Your Result is: {this.props.vector.x.toFixed(3)} | {this.props.vector.y.toFixed(3)}</h1>
+                <b className="flex justify-center">{name}</b>
+                <p className="flex justify-center text-center">{description}</p>
 
-                <Chat vector={this.props.vector}/>
+                <div className="flex flex-row min-h-screen justify-center items-center">
+                    <Chat vector={this.props.vector}/>
+                </div>
+
             </div>
         );
     }
