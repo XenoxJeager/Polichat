@@ -28,6 +28,6 @@ public class WebSocketMiddleware : IMiddleware
         TryParse(context.Request.Query["room_id"], out var id);
         Room room = (Room) id;
         
-        _handler.RegisterSocket(room, socket);
+        await _handler.RegisterSocket(room, socket);
     }
 }

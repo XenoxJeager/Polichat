@@ -2,6 +2,11 @@ import React from "react";
 import { Vector } from "../../quiz/Quiz";
 import { AdminChatMessage, ChatMessage, LocalChatMessage, RemoteChatMessage } from "./ChatMessage";
 
+interface ServerMessage {
+    type: string;
+    text: string;
+}
+
 interface ChatProps {
     vector: Vector;
 }
@@ -44,28 +49,41 @@ export class Chat extends React.Component<ChatProps, ChatState> {
         };
 
         this.ws.onmessage = (ev) => {
+            let chatMessage: ChatMessage | undefined;
+            let serverMessage = JSON.parse(ev.data) as ServerMessage;
+
+            switch (serverMessage.type) {
+                case "local":
+                    chatMessage = new LocalChatMessage(serverMessage.text);
+                    break;
+                case "remote":
+                    chatMessage = new RemoteChatMessage(serverMessage.text);
+                    break;
+                case "admin":
+                    chatMessage = new AdminChatMessage(serverMessage.text);
+                    break;
+            }
+
+            if (chatMessage === undefined)
+                return;
+
             this.setState({
-                chatHistory: this.state.chatHistory.concat(
-                    new RemoteChatMessage(ev.data as string)
-                )
+                chatHistory: this.state.chatHistory.concat(chatMessage)
             });
         };
-        
+         
         this.setState({
             chatHistory: this.state.chatHistory.concat(
                 new AdminChatMessage("Connecting...")
             ),
             state: WindowState.Active
-        })
+        });
     }
 
     sendMessage() {
         this.ws?.send(this.state.inputText);
         this.setState({
-            inputText: "",
-            chatHistory: this.state.chatHistory.concat(
-                new LocalChatMessage(this.state.inputText)
-            )
+            inputText: ""
         });
     }
 

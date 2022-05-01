@@ -27,12 +27,12 @@ public class UserSocket
     {
         var buffer = new byte[1500];
         var res = await WebSocket.ReceiveAsync(buffer, CancellationToken.None);
-        return (res, buffer);
+        return (res, buffer[..res.Count]);
     }
 
     public async Task Send(ArraySegment<byte> data)
     {
-        if (WebSocket.State == WebSocketState.Closed)
+        if (WebSocket.State != WebSocketState.Open)
             return;
         
         await WebSocket.SendAsync(

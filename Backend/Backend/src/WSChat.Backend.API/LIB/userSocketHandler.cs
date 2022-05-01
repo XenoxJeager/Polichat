@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Polichat_Backend.Resources;
 
 namespace Polichat_Backend.LIB;
@@ -13,16 +15,16 @@ public class UserSocketHandler
 {
     private List<UserSocket> UserSockets { get; } = new();
 
-    public void RegisterSocket(Room room, WebSocket webSocket)
+    public async Task RegisterSocket(Room room, WebSocket webSocket)
     {
         var userSocket = new UserSocket(room, webSocket);
-        UserSockets.Add(userSocket);
-        _ = Task.Run(() => HandleUserSocket(userSocket));
+        await HandleUserSocket(userSocket);
     }
 
     private async Task HandleUserSocket(UserSocket userSocket)
     {
         UserSockets.Add(userSocket);
+        await Task.Delay(1000);
         await BroadcastIndiscriminate(userSocket.Room, GetMessage("admin", $"{userSocket.Name} joined the chat!"));
         
         while (userSocket.WebSocket.State == WebSocketState.Open)
@@ -50,7 +52,6 @@ public class UserSocketHandler
         foreach (var socket in GetInRoom(author.Room))
         {
             var type = socket.Id == author.Id ? "local" : "remote";
-
             await socket.Send(GetMessage(type, text));
         }
     }
@@ -59,5 +60,13 @@ public class UserSocketHandler
         UserSockets.Where(socket => socket.Room == room);
     
     private static ArraySegment<byte> GetMessage(string type, string text) => 
-        Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(new { Type = type, Text = text }));
+        Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(
+            new { Type = type, Text = text },
+            new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy()
+                }
+            }));
 }
