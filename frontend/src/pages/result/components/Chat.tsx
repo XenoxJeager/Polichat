@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, KeyboardEventHandler } from "react";
 import { Vector } from "../../quiz/Quiz";
 import { AdminChatMessage, ChatMessage, LocalChatMessage, RemoteChatMessage } from "./ChatMessage";
 
@@ -59,7 +59,7 @@ export class Chat extends React.Component<ChatProps, ChatState> {
         })
     }
 
-    handleClick() {
+    sendMessage() {
         this.ws?.send(this.state.inputText);
         this.setState({
             inputText: "",
@@ -67,6 +67,14 @@ export class Chat extends React.Component<ChatProps, ChatState> {
                 new LocalChatMessage(this.state.inputText)
             )
         });
+    }
+
+    // TODO: what is the fucking type of ev??????
+    handleInput(ev: any) {
+        console.log("pressed");
+        ev.preventDefault();
+        if(ev.key === "Enter") 
+            this.sendMessage();
     }
 
     renderInactive(): React.ReactNode {
@@ -86,10 +94,11 @@ export class Chat extends React.Component<ChatProps, ChatState> {
                 <input 
                     onChange={(ev) => this.setState({inputText: ev.target.value})} 
                     value={this.state.inputText} 
-                    placeholder="Message...">
+                    placeholder="Message..."
+                    onKeyUp={this.handleInput.bind(this)}>
                 </input>
 
-                <button onClick={this.handleClick.bind(this)}>Send</button>
+                <button onClick={this.sendMessage.bind(this)}>Send</button>
             </>
         );
     }
