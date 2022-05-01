@@ -1,7 +1,7 @@
 import React from "react";
 import { getUrl } from "../../../config/Constants";
 import { Vector } from "../../quiz/Quiz";
-import { AdminChatMessage, ChatMessage, RemoteChatMessage } from "./ChatMessage";
+import { AdminChatMessage, ChatMessage, LocalChatMessage, RemoteChatMessage } from "./ChatMessage";
 
 interface ChatProps {
     vector: Vector;
@@ -44,7 +44,7 @@ export class Chat extends React.Component<ChatProps, ChatState> {
             });
         };
 
-        this.ws.onmessage = (ev: MessageEvent<any>) => {
+        this.ws.onmessage = (ev) => {
             this.setState({
                 chatHistory: this.state.chatHistory.concat(
                     new RemoteChatMessage(ev.data as string)
@@ -60,6 +60,16 @@ export class Chat extends React.Component<ChatProps, ChatState> {
         })
     }
 
+    handleClick() {
+        this.ws?.send(this.state.inputText);
+        this.setState({
+            inputText: "",
+            chatHistory: this.state.chatHistory.concat(
+                new LocalChatMessage(this.state.inputText)
+            )
+        });
+    }
+
     renderInactive(): React.ReactNode {
         return <button onClick={this.connect.bind(this)}>Connect!</button>;
     }
@@ -73,8 +83,14 @@ export class Chat extends React.Component<ChatProps, ChatState> {
                 <ol>
                     {chatHistory}
                 </ol>
-                <input></input>
-                <button>Send</button>
+
+                <input 
+                    onChange={(ev) => this.setState({inputText: ev.target.value})} 
+                    value={this.state.inputText} 
+                    placeholder="Message...">
+                </input>
+
+                <button onClick={this.handleClick.bind(this)}>Send</button>
             </>
         );
     }
