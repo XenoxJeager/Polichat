@@ -74,6 +74,7 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                     </div>
                     <div className="mx-14 my-5 text-center h-90 border-y-4 border-x-4">
                     <h1 className="text-3xl bold ">Chat with your comrades!</h1>
+                    <Chat vector={this.props.vector}/>
                     </div>
                 </div>
             </div>
