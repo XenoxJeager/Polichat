@@ -31,13 +31,6 @@ class SignIn extends React.Component<SignInProps, SignInState> {
     render(): React.ReactNode {
         return (
             <>
-                {/* <div className="justify-center flex">
-                    <p>Username: </p>
-                    <input onChange={(event) => this.setState({username: event.target.value})}></input>
-                    <p>Password: </p>
-                    <input onChange={(event) => this.setState({password: event.target.value})}></input>
-                    <button onClick={this.submitLogin.bind(this)}>Submit</button>
-                </div> */}
 
                 <div className="flex items-center justify-center min-h-screen bg-gray-20">
                     <div className="px-8 py-6 mt-4 text-left bg-white shadow-lg">

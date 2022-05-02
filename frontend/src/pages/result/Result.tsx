@@ -63,7 +63,7 @@ export default class Result extends React.Component<ResultProps, ResultState> {
 
         return (
             <div>
-                <div className="grid grid-cols-2 divide-x borderWidth:0">
+                <div className="grid grid-cols-2 divide-x borderWidth:0 pt-5">
                     <div className="place-items-center h-screen ">
                         <div className="grid place-items-center v-screen mx-14 my-5">
                             <h1 className="text-lg">Your Result is: {this.props.vector.x.toFixed(3)} | {this.props.vector.y.toFixed(3)}</h1>
@@ -72,9 +72,9 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                             <h1 className="italic">{description}</h1>                        
                         </div>
                     </div>
-                    <div className="mx-14 my-5 text-center border-4 ">
-                        <h1 className="text-3xl bold border-x-4 border-b-4 ">Chat with your comrades!</h1>
-                        <div className="flex justify-left h-screen border-x-4 overflow-y-auto">
+                    <div className="mx-14 my-5 text-center border-4 bg-gray-100">
+                        <h1 className="text-3xl bold border-x-4 border-b-4 p-5">Chat with your comrades!</h1>
+                        <div className="flex justify-left h-screen border-x-4 p-5 overscroll-y-auto overflow-y-scroll">
                             <Chat vector={this.props.vector}/>
                         </div>
                     </div>

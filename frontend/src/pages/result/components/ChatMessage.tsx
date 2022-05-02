@@ -14,18 +14,18 @@ export abstract class ChatMessage {
 
 export class AdminChatMessage extends ChatMessage {
     render(): React.ReactNode {
-        return <li key={this.id}>{this.text}</li>;
+        return <li className="" key={this.id}>{this.text}</li>;
     }
 }
 
 export class LocalChatMessage extends ChatMessage {
     render(): React.ReactNode {
-        return <li className="flex justify-right text-right" key={this.id}>{this.text}</li>;
+        return <li className="" key={this.id}>{this.text}</li>;
     }
 }
 
 export class RemoteChatMessage extends ChatMessage {
     render(): React.ReactNode {
-        return <li key={this.id}>{this.text}</li>;
+        return <li className="" key={this.id}>{this.text}</li>;
     }
 }

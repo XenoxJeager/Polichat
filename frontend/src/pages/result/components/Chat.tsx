@@ -105,18 +105,22 @@ export class Chat extends React.Component<ChatProps, ChatState> {
 
         return (
             <>
-                <ol>
-                    {chatHistory}
-                </ol>
+                <div>
+                    <ol>
+                        {chatHistory}
+                    </ol>
 
-                <input 
-                    onChange={(ev) => this.setState({inputText: ev.target.value})} 
-                    value={this.state.inputText} 
-                    placeholder="Message..."
-                    onKeyUp={this.handleInput.bind(this)}>
-                </input>
+                    <input 
+                        className="px-4 py-2 mt-2 rounded-5 bg-gray-50 mr-2 mb-3"
+                        onChange={(ev) => this.setState({inputText: ev.target.value})} 
+                        value={this.state.inputText} 
+                        placeholder="Message..."
+                        onKeyUp={this.handleInput.bind(this)}>
+                    </input>
+                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-3 rounded justify-end" onClick={this.sendMessage.bind(this)}>Send</button>
+                    
+                </div>
 
-                <button onClick={this.sendMessage.bind(this)}>Send</button>
             </>
         );
     }
