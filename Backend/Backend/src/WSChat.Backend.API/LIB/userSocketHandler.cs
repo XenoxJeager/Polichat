@@ -35,6 +35,10 @@ public class UserSocketHandler
                 break;
             
             var str = Encoding.UTF8.GetString(text);
+
+            if (string.IsNullOrEmpty(str))
+                continue;
+
             await BroadcastDiscriminate(userSocket, $"{userSocket.Name}: {str}");
         }
 
