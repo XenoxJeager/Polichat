@@ -34,7 +34,12 @@ public class UserSocketHandler
             if (result.MessageType == WebSocketMessageType.Close)
                 break;
             
-            await BroadcastDiscriminate(userSocket, Encoding.UTF8.GetString(text));
+            var str = Encoding.UTF8.GetString(text);
+
+            if (string.IsNullOrEmpty(str))
+                continue;
+
+            await BroadcastDiscriminate(userSocket, $"{userSocket.Name}: {str}");
         }
 
         UserSockets.Remove(userSocket);

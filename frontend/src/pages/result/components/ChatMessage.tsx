@@ -20,7 +20,7 @@ export class AdminChatMessage extends ChatMessage {
 
 export class LocalChatMessage extends ChatMessage {
     render(): React.ReactNode {
-        return <li key={this.id}>{this.text}</li>;
+        return <li className="flex justify-right text-right" key={this.id}>{this.text}</li>;
     }
 }
 
