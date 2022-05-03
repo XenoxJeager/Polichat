@@ -11,20 +11,19 @@ using Polichat_Backend.Resources;
 
 namespace Polichat_Backend.LIB;
 
-public class UserSocketHandler
+public class UserSocketService
 {
     private List<UserSocket> UserSockets { get; } = new();
 
     public async Task RegisterSocket(Room room, WebSocket webSocket)
     {
         var userSocket = new UserSocket(room, webSocket);
-        await HandleUserSocket(userSocket);
+        _ = Task.Run(async () => await HandleUserSocket(userSocket));
     }
 
     private async Task HandleUserSocket(UserSocket userSocket)
     {
         UserSockets.Add(userSocket);
-        await Task.Delay(1000);
         await BroadcastIndiscriminate(userSocket.Room, GetMessage("admin", $"{userSocket.Name} joined the chat!"));
         
         while (userSocket.WebSocket.State == WebSocketState.Open)

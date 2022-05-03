@@ -1,20 +1,10 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Polichat_Backend.Database;
-
-namespace Polichat_Backend.Endpoints;
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
-public class Evaluation
-{
-    
-}
+namespace Polichat_Backend.Controllers;
+
 public class Fields
 {
     public Fields(double startX, double startY, double endX, double endY, string ideologyName, string ideologyDescription)
@@ -40,14 +30,11 @@ public record IdeologyInfo(string Name, string Description);
 [ApiController]
 public class EvaluationEndpoint
 {
-    bool inRange(double value, double min, double max) => ((value - max)*(value - min) <= 0.0);
-    
     [Route("/evaluation")]
     [HttpGet]
     public async Task<IdeologyInfo> Evaluation(double x, double y)
     {
-        //magic maker 20000
-        bool inRange(double value, double min, double max) => ((value - max) * (value - min) <= 0.0);
+        bool InRange(double value, double min, double max) => (value - max) * (value - min) <= 0.0;
 
         IDictionary<int, Fields> IdeologyDictionary = new Dictionary<int, Fields>();
 
@@ -200,10 +187,10 @@ public class EvaluationEndpoint
                 "Anarcho-Capitalism (AnCap), also called Private Property Anarchy, Private Law Society,[5] and Rothbardianism,[6] as well a bunch of other names,[7] is a political ideology, as well as a theoretical social order, based around Classical Liberal conception of  property rights, individualism, and rejection of the state but lead to its logical conclusion, the elimination of it."));
 
         return (from Fields value in IdeologyDictionary.Values
-            where inRange(x,
+            where InRange(x,
                       value.StartX,
                       value.EndX) &&
-                  inRange(y,
+                  InRange(y,
                       value.StartY,
                       value.EndY)
             select new IdeologyInfo(value.IdeologyName,

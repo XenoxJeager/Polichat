@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Polichat_Backend.Database;
 
-namespace Polichat_Backend.Endpoints;
+namespace Polichat_Backend.Controllers;
 
 public class Question
 {
@@ -20,12 +20,12 @@ public class Weight
 }
 
 [ApiController]
-public class QuestionEndpoint
+public class QuestionController
 {
-    private Context _context;
-    private Random _random = new ();
+    private readonly Context _context;
+    private readonly Random _random = new ();
     
-    public QuestionEndpoint(Context context)
+    public QuestionController(Context context)
     {
         _context = context;
     }
