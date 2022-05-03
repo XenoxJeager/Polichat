@@ -117,7 +117,7 @@ export class Chat extends React.Component<ChatProps, ChatState> {
                         placeholder="Message..."
                         onKeyUp={this.handleInput.bind(this)}>
                     </input>
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-3 rounded justify-end" onClick={this.sendMessage.bind(this)}>Send</button>
+                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded justify-end" onClick={this.sendMessage.bind(this)}>Send</button>
                     
                 </div>
 
@@ -138,7 +138,7 @@ export class Chat extends React.Component<ChatProps, ChatState> {
         }
 
         return (
-            <div className="float-right">
+            <div className="flex flex-col items-center ">
                 {content}
             </div>
         );
