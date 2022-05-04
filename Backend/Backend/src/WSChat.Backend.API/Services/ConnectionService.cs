@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.WebSockets;
-using System.Threading;
-using System.Threading.Tasks;
-using Polichat_Backend.Resources;
+using Polichat_Backend.Models;
 
-namespace Polichat_Backend.LIB;
+namespace Polichat_Backend.Services;
 
 public class ConnectionService
 {

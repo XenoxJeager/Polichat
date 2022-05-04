@@ -1,4 +1,4 @@
-﻿namespace Polichat_Backend.Resources;
+﻿namespace Polichat_Backend.Models;
 
 public enum Room
 {

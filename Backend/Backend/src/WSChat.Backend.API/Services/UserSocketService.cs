@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Polichat_Backend.Resources;
+using Polichat_Backend.Models;
 
-namespace Polichat_Backend.LIB;
+namespace Polichat_Backend.Services;
 
 public class UserSocketService
 {
@@ -18,7 +17,7 @@ public class UserSocketService
     public async Task RegisterSocket(Room room, WebSocket webSocket)
     {
         var userSocket = new UserSocket(room, webSocket);
-        _ = Task.Run(async () => await HandleUserSocket(userSocket));
+        await HandleUserSocket(userSocket);
     }
 
     private async Task HandleUserSocket(UserSocket userSocket)

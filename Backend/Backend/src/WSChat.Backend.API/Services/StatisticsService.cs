@@ -1,4 +1,4 @@
-﻿namespace Polichat_Backend.LIB;
+﻿namespace Polichat_Backend.Services;
 
 public class StatisticsService
 {

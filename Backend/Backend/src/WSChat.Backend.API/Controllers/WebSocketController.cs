@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Polichat_Backend.LIB;
-using Polichat_Backend.Resources;
+using Polichat_Backend.Models;
+using Polichat_Backend.Services;
 using static System.Int32;
 
 namespace Polichat_Backend.Controllers;

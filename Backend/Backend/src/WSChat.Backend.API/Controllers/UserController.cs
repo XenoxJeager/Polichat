@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Polichat_Backend.LIB;
+using Polichat_Backend.Services;
 
 namespace Polichat_Backend.Controllers;
 

@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -10,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Polichat_Backend.Controllers;
 using Polichat_Backend.Database;
-using Polichat_Backend.LIB;
+using Polichat_Backend.Services;
 
 namespace Polichat_Backend;
 
@@ -18,6 +19,12 @@ public static class Program
 {
     public static void Main(string[] args)
     {
+        var secret = RandomNumberGenerator.GetBytes(256);
+        var jwt = new JwtService(secret);
+        jwt.TryLogin("admin", "admin");
+        
+        return;
+
         var builder = WebApplication.CreateBuilder(args);
         
         builder.Services.AddSingleton<UserSocketService>();
