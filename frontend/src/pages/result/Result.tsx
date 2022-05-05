@@ -3,6 +3,7 @@ import React from "react";
 import { getUrl } from "../../config/Constants";
 import { Vector } from "../quiz/Quiz";
 import { Chat } from "./components/Chat";
+import car from './imgs/chad.png'; 
 
 interface ResultProps {
     vector: Vector;
@@ -30,6 +31,7 @@ export default class Result extends React.Component<ResultProps, ResultState> {
         this.state = {
             state: WindowState.Loading
         };
+       
     }
 
     componentDidMount() {    
@@ -74,12 +76,14 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                     </div>
                     <div className="mx-14 my-5 text-center border-4 bg-gray-100">
                         <h1 className="text-3xl bold border-x-4 border-b-4 p-5">Chat with your comrades!</h1>
-                        
-                                <div className="h-screen border-x-4 p-5 overscroll-y-auto overflow-y-scroll">
-                                    <div className="object-cover bg-scroll bg-[path(C:\Users\spayc\Documents\GitHub\Polichat\frontend\src\imgs\compass.png)] opacity-50">
-                                        <Chat vector={this.props.vector}/>
-                                    </div>
-                                </div>
+                        <div className="h-screen border-x-4 p-5 overscroll-y overflow-y-scroll">
+                            <div className="flex justify-center">
+                                <div className="absolute">
+                                    <Chat vector={this.props.vector}/>
+                                </div> 
+                            </div>
+                        <img className="bg-repeat-y" src={car} alt="chad.png"></img> 
+                        </div>
                     </div>
                 </div>
             </div>
