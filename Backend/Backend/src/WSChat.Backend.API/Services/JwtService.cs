@@ -19,7 +19,7 @@ public class JwtService
     {
         if (!CheckCredentials(username, password))
             return null;
-
+        
         var handler = new JwtSecurityTokenHandler();
         var descriptor = new SecurityTokenDescriptor
         {
