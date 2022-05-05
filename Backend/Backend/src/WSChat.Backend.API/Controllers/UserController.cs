@@ -1,24 +1,27 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Polichat_Backend.Services;
 
 namespace Polichat_Backend.Controllers;
 
 [ApiController]
-[Authorize]
-public class UserController
+public class UserController : ControllerBase
 {
-    private StatisticsService _statistics;
+    private readonly JwtService _jwtService;
 
-    public UserController(StatisticsService statistics)
+    public UserController(JwtService jwtService)
     {
-        _statistics = statistics;
+        _jwtService = jwtService;
     }
     
-    [HttpGet("/statistics")]
-    public async Task GetStatistics()
+    [Route("/signIn")]
+    public IActionResult SignIn(string username, string password)
     {
-        
+        var res = _jwtService.TryLogin(username, password);
+
+        if (res == null)
+            return Unauthorized();
+
+        return Ok(res);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Polichat_Backend.Services;
@@ -8,13 +9,13 @@ namespace Polichat_Backend.Services;
 public class JwtService
 {
     private readonly byte[] _secret;
-
+    
     public JwtService(byte[] secret)
     {
         _secret = secret;
     }
     
-    public SecurityToken TryLogin(string username, string password)
+    public string TryLogin(string username, string password)
     {
         if (!CheckCredentials(username, password))
             return null;
@@ -33,11 +34,10 @@ public class JwtService
                 SecurityAlgorithms.HmacSha256Signature)
         };
         var token = handler.CreateToken(descriptor);
-        Console.WriteLine(token.ToString());
         
-        return token;
+        return handler.WriteToken(token);
     }
-
+    
     private bool CheckCredentials(string username, string password)
     {
         return username == "admin" && password == "admin";

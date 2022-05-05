@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
@@ -15,22 +16,20 @@ using Polichat_Backend.Services;
 
 namespace Polichat_Backend;
 
+public class SingletonService : Attribute {}
+
 public static class Program
 {
     public static void Main(string[] args)
     {
-        var secret = RandomNumberGenerator.GetBytes(256);
-        var jwt = new JwtService(secret);
-        jwt.TryLogin("admin", "admin");
-        
-        return;
-
         var builder = WebApplication.CreateBuilder(args);
-        
-        builder.Services.AddSingleton<UserSocketService>();
-        builder.Services.AddSingleton<WebSocketController>();
-        builder.Services.AddSingleton<JwtService>();
-        builder.Services.AddSingleton<StatisticsService>();
+
+        foreach (var obj in Assembly.GetExecutingAssembly().GetTypes()
+                     .Where(predicate => predicate.IsDefined(typeof(SingletonService))))
+            builder.Services.AddSingleton(obj);
+
+        var secret = RandomNumberGenerator.GetBytes(2048);
+        builder.Services.AddTransient(_ => new JwtService(secret));
         
         builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder => policyBuilder.AllowAnyOrigin()));
         builder.Services.AddControllers();
@@ -44,16 +43,13 @@ public static class Program
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = true,
-                    ValidIssuer = "localhost:3001",
-                    
-                    ValidateAudience = true,
-                    ValidAudience = "localhost:3001",
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
                     
                     ValidateLifetime = true,
 
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("hello"))
+                    IssuerSigningKey = new SymmetricSecurityKey(secret)
                 };
             });
 
@@ -71,7 +67,15 @@ public static class Program
         
         app.MapControllers();
         app.UseCors();
+        
         app.UseAuthentication();
+        app.UseRouting();
+        app.UseAuthorization();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+        
         app.UseWebSockets();
         app.Run();
     }
