@@ -3,7 +3,11 @@ import React from "react";
 import { getUrl } from "../../config/Constants";
 import { Vector } from "../quiz/Quiz";
 import { Chat } from "./components/Chat";
-import car from './imgs/chad.png'; 
+import car from './imgs/chad.png';
+import { createRoot } from 'react-dom/client';
+import { Stage, Layer, Rect, Text, Circle, Line } from 'react-konva';
+
+
 
 interface ResultProps {
     vector: Vector;
@@ -59,6 +63,15 @@ export default class Result extends React.Component<ResultProps, ResultState> {
         return null;
     }   
 
+
+    circleDraw = () => {
+        // return (
+        //   <Stage width={window.innerWidth} height={window.innerHeight}>
+            
+        //   </Stage>
+        // );
+      };
+
     renderResult(): React.ReactNode {
         const name = this.state.ideology!.name;
         const description = this.state.ideology!.description;
@@ -70,7 +83,12 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                         <div className="grid place-items-center v-screen mx-14 my-5">
                             <h1 className="text-lg">Your Result is: {this.props.vector.x.toFixed(3)} | {this.props.vector.y.toFixed(3)}</h1>
                             <h1 className="text-4xl bold mb-5">{name}</h1>
-                            <img className="w-3/4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Political_Compass_standard_model.svg/543px-Political_Compass_standard_model.svg.png"alt="political"></img>
+
+
+                            
+
+
+                            {/* <img className="w-3/4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Political_Compass_standard_model.svg/543px-Political_Compass_standard_model.svg.png"alt="political"></img> */}
                             <h1 className="italic">{description}</h1>                        
                         </div>
                     </div>
