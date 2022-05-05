@@ -67,6 +67,7 @@ public static class Program
         
         app.MapControllers();
         app.UseCors();
+        app.UseWebSockets();
         
         app.UseAuthentication();
         app.UseRouting();
@@ -76,7 +77,6 @@ public static class Program
             endpoints.MapControllers();
         });
         
-        app.UseWebSockets();
         app.Run();
     }
 }
