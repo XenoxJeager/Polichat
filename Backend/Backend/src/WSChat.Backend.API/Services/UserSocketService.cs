@@ -10,6 +10,7 @@ using Polichat_Backend.Models;
 
 namespace Polichat_Backend.Services;
 
+[SingletonService]
 public class UserSocketService
 {
     private List<UserSocket> UserSockets { get; } = new();
