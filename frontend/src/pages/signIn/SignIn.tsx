@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { NavigateFunction, useNavigate } from "react-router";
 import { getUrl } from "../../config/Constants";
+import { WrappedQuiz } from "../quiz/Quiz";
 
 interface SignInProps {
     navigate?: NavigateFunction;
@@ -16,15 +17,16 @@ interface SignInState {
 
 class SignIn extends React.Component<SignInProps, SignInState> {
     submitLogin() {
-        axios.post(getUrl("/getJWT"), 
+        axios.post(getUrl("/signIn"), 
         {
             username: this.state.username, 
             password: this.state.password
         })
         .then((response) => {
-            var jwt = response.data.jwt as string;
-            localStorage.setItem("JWT", jwt);
-            this.props.navigate!("analytics");
+            localStorage.setItem("jwtToken", response.data);
+            this.props.navigate!("/analytics");
+        }).catch((ex) => {
+            console.log(ex);
         });
     }
 
@@ -64,6 +66,6 @@ class SignIn extends React.Component<SignInProps, SignInState> {
     }
 }
 
-export const WrappedSignIn = () => {
-    return <SignIn navigate={useNavigate()}/>;
+export const WrappedSignIn = (props: SignInProps) => {
+    return <SignIn {...props} navigate={useNavigate()}/>;
 };

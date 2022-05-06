@@ -88,7 +88,7 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                             
 
 
-                            {/* <img className="w-3/4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Political_Compass_standard_model.svg/543px-Political_Compass_standard_model.svg.png"alt="political"></img> */}
+                            <img className="w-3/4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Political_Compass_standard_model.svg/543px-Political_Compass_standard_model.svg.png"alt="political"></img>
                             <h1 className="italic">{description}</h1>                        
                         </div>
                     </div>
