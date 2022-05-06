@@ -40,6 +40,7 @@ public class JwtService
     
     private bool CheckCredentials(string username, string password)
     {
-        return username == "admin" && password == "admin";
+        Environment.SetEnvironmentVariable("passwd","admin");
+        return username == "admin" && password == Environment.GetEnvironmentVariable("passwd");
     }
 }

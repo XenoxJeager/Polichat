@@ -30,7 +30,16 @@ public static class Program
         var secret = RandomNumberGenerator.GetBytes(2048);
         builder.Services.AddTransient(_ => new JwtService(secret));
         
-        builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder => policyBuilder.AllowAnyOrigin()));
+        builder.Services.AddCors(
+            options => 
+                options.AddDefaultPolicy(
+                    policyBuilder => 
+                        policyBuilder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                        ));
+        
         builder.Services.AddControllers();
         builder.Services
             .AddAuthentication(options =>
@@ -69,14 +78,16 @@ public static class Program
         
         if (builder.Environment.IsDevelopment())
             app.UseDeveloperExceptionPage();
-        
-        app.MapControllers();
+
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseRouting();
         app.UseCors();
+        app.UseAuthentication();
+        app.UseAuthorization();
+        
         app.UseWebSockets();
         
-        app.UseAuthentication();
-        app.UseRouting();
-        app.UseAuthorization();
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
