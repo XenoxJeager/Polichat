@@ -76,14 +76,14 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                     </div>
                     <div className="mx-14 my-5 text-center border-4 bg-gray-100">
                         <h1 className="text-3xl bold border-x-4 border-b-4 p-5">Chat with your comrades!</h1>
-                        <div className="h-screen border-x-4 p-5 overscroll-y overflow-y-scroll">
-                            <div className="flex justify-center">
+                        <div className="border-x-4 p-5 ">
+                        <img className="inline-block" src={car} alt="chad.png"></img>
+                            <div className="h-screen overscroll-y-auto overflow-y-scroll ">
                                 <div className="absolute">
-                                    <Chat vector={this.props.vector}/>
-                                </div> 
+                                <Chat vector={this.props.vector}/>
+                            </div> 
                             </div>
-                        <img className="bg-repeat-y" src={car} alt="chad.png"></img> 
-                        </div>
+                        </div>                               
                     </div>
                 </div>
             </div>
