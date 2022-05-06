@@ -95,9 +95,8 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                     <div className="mx-14 my-5 text-center border-4 bg-gray-100">
                         <h1 className="text-3xl bold border-x-4 border-b-4 p-5">Chat with your comrades!</h1>
                         <div className="border-x-4 p-5 ">
-                        <img className="inline-block" src={car} alt="chad.png"></img>
-                            <div className="h-screen overscroll-y-auto overflow-y-scroll ">
-                                <div className="absolute">
+                            <div className="bg-[url(" {car} ")] h-screen overscroll-y-auto overflow-y-scroll ">
+                                <div className="">
                                 <Chat vector={this.props.vector}/>
                             </div> 
                             </div>
@@ -108,3 +107,4 @@ export default class Result extends React.Component<ResultProps, ResultState> {
         );
     }
 }
+
