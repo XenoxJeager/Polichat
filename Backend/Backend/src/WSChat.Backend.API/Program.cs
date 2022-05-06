@@ -61,6 +61,13 @@ public static class Program
             );
 
         var app = builder.Build();
+
+        app.Use(async (context, next) =>
+        {
+            app.Services.GetService<AnalyticsService>()!.ApiAnalytics.TotalApiCalls += 1;
+            await next();
+        });    
+
         
         if (builder.Environment.IsDevelopment())
             app.UseDeveloperExceptionPage();

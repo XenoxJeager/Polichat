@@ -14,6 +14,12 @@ namespace Polichat_Backend.Services;
 public class UserSocketService
 {
     private List<UserSocket> UserSockets { get; } = new();
+    private readonly Dictionary<Room, WebSocketChatAnalytics> _analytics;
+
+    public UserSocketService(AnalyticsService analyticsService)
+    {
+        _analytics = analyticsService.ChatAnalytics;
+    }
 
     public async Task RegisterSocket(Room room, WebSocket webSocket)
     {
@@ -23,11 +29,18 @@ public class UserSocketService
 
     private async Task HandleUserSocket(UserSocket userSocket)
     {
+        if (!_analytics.ContainsKey(userSocket.Room))
+            _analytics[userSocket.Room] = new WebSocketChatAnalytics();
+
+        var analytics = _analytics[userSocket.Room];
+        analytics.ActiveUsers += 1;
+
         UserSockets.Add(userSocket);
         await BroadcastIndiscriminate(userSocket.Room, GetMessage("admin", $"{userSocket.Name} joined the chat!"));
         
         while (userSocket.WebSocket.State == WebSocketState.Open)
         {
+            analytics.TotalChatMessages += 1;
             var (result, text) = await userSocket.Receive();
             
             if (result.MessageType == WebSocketMessageType.Close)
@@ -39,6 +52,7 @@ public class UserSocketService
                 continue;
 
             await BroadcastDiscriminate(userSocket, $"{userSocket.Name}: {str}");
+            analytics.ActiveUsers -= 1;
         }
 
         UserSockets.Remove(userSocket);
