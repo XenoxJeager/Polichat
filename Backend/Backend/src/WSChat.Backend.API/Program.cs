@@ -24,10 +24,9 @@ public static class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        foreach (var obj in Assembly.GetExecutingAssembly().GetTypes()
-                     .Where(predicate => predicate.IsDefined(typeof(SingletonService))))
-            builder.Services.AddSingleton(obj);
-
+        builder.Services.AddSingleton<AnalyticsService>();
+        builder.Services.AddSingleton<UserSocketService>();
+        
         var secret = RandomNumberGenerator.GetBytes(2048);
         builder.Services.AddTransient(_ => new JwtService(secret));
         
@@ -52,7 +51,7 @@ public static class Program
                     IssuerSigningKey = new SymmetricSecurityKey(secret)
                 };
             });
-
+        
         const string connectionString = "Server=127.0.0.1;Database=polichat;Uid=root;";
         builder.Services.AddDbContext<Context>(
             optionsBuilder => optionsBuilder.UseMySql(
@@ -67,7 +66,6 @@ public static class Program
             app.Services.GetService<AnalyticsService>()!.ApiAnalytics.TotalApiCalls += 1;
             await next();
         });    
-
         
         if (builder.Environment.IsDevelopment())
             app.UseDeveloperExceptionPage();
