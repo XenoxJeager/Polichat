@@ -84,23 +84,19 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                             <h1 className="text-lg">Your Result is: {this.props.vector.x.toFixed(3)} | {this.props.vector.y.toFixed(3)}</h1>
                             <h1 className="text-4xl bold mb-5">{name}</h1>
 
-
-                            
-
-
                             <img className="w-3/4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Political_Compass_standard_model.svg/543px-Political_Compass_standard_model.svg.png"alt="political"></img>
                             <h1 className="italic">{description}</h1>                        
                         </div>
                     </div>
                     <div className="mx-14 my-5 text-center border-4 bg-gray-100">
                         <h1 className="text-3xl bold border-x-4 border-b-4 p-5">Chat with your comrades!</h1>
-                        <div className="h-screen border-x-4 p-5 overscroll-y overflow-y-scroll">
-                            <div className="flex justify-center">
-                                <div className="absolute">
-                                    <Chat vector={this.props.vector}/>
+                        <div className="border-x-4 p-5 ">
+                            <div className="bg-[url('https://pixabay.com/get/gff1ff37b37c783dda2aab4876e7ac75f199ec4c38ed5b750ba6f5a2b1ad97d4e4d66e60f5c3c4322baf968f934e9a7a115d38215bef19dbcd0cbf6c4341ea9c1_640.jpg')] h-screen overscroll-y-auto overflow-y-scroll ">
+                                <div className="">
+                                <Chat vector={this.props.vector}/>
                                 </div> 
-                            </div>
-                        <img className="bg-repeat-y" src={car} alt="chad.png"></img> 
+                        
+                        </div>
                         </div>
                     </div>
                 </div>
