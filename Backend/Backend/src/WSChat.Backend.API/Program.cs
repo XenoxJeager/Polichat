@@ -33,8 +33,8 @@ public static class Program
         builder.Services.AddCors(
             options => 
                 options.AddDefaultPolicy(
-                    policyBuilder => 
-                        policyBuilder
+                    policy => 
+                        policy
                             .AllowAnyOrigin()
                             .AllowAnyHeader()
                             .AllowAnyMethod()
@@ -78,11 +78,13 @@ public static class Program
         
         if (builder.Environment.IsDevelopment())
             app.UseDeveloperExceptionPage();
-
-        app.UseHttpsRedirection();
+        
+        // app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
+        
         app.UseCors();
+        
         app.UseAuthentication();
         app.UseAuthorization();
         

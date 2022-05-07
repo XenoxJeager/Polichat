@@ -20,7 +20,7 @@ public class Weight
 }
 
 [ApiController]
-public class QuestionController
+public class QuestionController : ControllerBase
 {
     private readonly Context _context;
     private readonly Random _random = new ();
@@ -49,6 +49,7 @@ public class QuestionController
                 }
             });
         
+        Response.Headers.Add("Access-Control-Allow-Headers", "*");
         return questions.Take(20).ToArray();
     }
 }
