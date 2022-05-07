@@ -86,9 +86,9 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                     </div>
                     <div className="mx-14 my-5 text-center border-4 bg-gray-100">
                         <h1 className="text-3xl bold border-x-4 border-b-4 p-5">Chat with your comrades!</h1>
-                        <div className="border-x-4 p-5 ">
-                            <div className="h-screen overscroll-y-auto overflow-y-scroll"
-                                style={{ backgroundImage:`url(${chad})` }}>
+                        <div className="p-5 border-x-4">
+                            <div className="h-[80vh] overflow-y-scroll  "
+                                style={{ backgroundImage:`url(${chad})`, backgroundRepeat:'no-repeat', backgroundPosition:'fixed', backgroundSize:'98%'}}>
                                 <div className="">
                                 <Chat vector={this.props.vector}/>
                                 </div> 
