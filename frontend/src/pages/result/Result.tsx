@@ -3,11 +3,7 @@ import React from "react";
 import { getUrl } from "../../config/Constants";
 import { Vector } from "../quiz/Quiz";
 import { Chat } from "./components/Chat";
-import car from './imgs/chad.png';
-import { createRoot } from 'react-dom/client';
-import { Stage, Layer, Rect, Text, Circle, Line } from 'react-konva';
-
-
+import chad from "./imgs/chad.png";
 
 interface ResultProps {
     vector: Vector;
@@ -91,12 +87,12 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                     <div className="mx-14 my-5 text-center border-4 bg-gray-100">
                         <h1 className="text-3xl bold border-x-4 border-b-4 p-5">Chat with your comrades!</h1>
                         <div className="border-x-4 p-5 ">
-                            <div className="bg-[url('https://pixabay.com/get/gff1ff37b37c783dda2aab4876e7ac75f199ec4c38ed5b750ba6f5a2b1ad97d4e4d66e60f5c3c4322baf968f934e9a7a115d38215bef19dbcd0cbf6c4341ea9c1_640.jpg')] h-screen overscroll-y-auto overflow-y-scroll ">
+                            <div className="h-screen overscroll-y-auto overflow-y-scroll"
+                                style={{ backgroundImage:`url(${chad})` }}>
                                 <div className="">
                                 <Chat vector={this.props.vector}/>
                                 </div> 
-                        
-                        </div>
+                            </div>
                         </div>
                     </div>
                 </div>
