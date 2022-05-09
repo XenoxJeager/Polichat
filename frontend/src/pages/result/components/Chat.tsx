@@ -24,7 +24,7 @@ interface ChatState {
 
 export class Chat extends React.Component<ChatProps, ChatState> {
     private ws?: WebSocket; 
-
+   
     constructor(props: ChatProps) {
         super(props);
 
@@ -39,11 +39,29 @@ export class Chat extends React.Component<ChatProps, ChatState> {
         const roomId = (this.props.vector.x > 0 ? 1 : 0) + (this.props.vector.y > 0 ? 2 : 0);
         const connStr = "ws://localhost:3001/ws?room_id=" + roomId;
         this.ws = new WebSocket(connStr);
-
+        let roomname = ""
         this.ws.onopen = () => {
+            
+
+            switch(roomId){
+                case(0):
+                    roomname = "Authoritarian Left";
+                    break;
+                case(1):
+                    roomname = "Authoritarian Right";
+                    break;
+                case(2):
+                    roomname = "Liberal Left";
+                    break
+                case(3):
+                    roomname = "Liberal Right";
+                    break;                  
+            }
+
+
             this.setState({
                 chatHistory: this.state.chatHistory.concat(
-                    new AdminChatMessage("Connected to Chat")
+                    new AdminChatMessage(`Connected to the ${roomname} Chat`)
                 )
             });
         };
