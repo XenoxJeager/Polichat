@@ -96,7 +96,7 @@ export class Chat extends React.Component<ChatProps, ChatState> {
     }
 
     renderInactive(): React.ReactNode {
-        return <button onClick={this.connect.bind(this)}>Connect!</button>;
+        return <button className="text-3xl  " onClick={this.connect.bind(this)}>Connect!</button>;
     }
 
     renderActive(): React.ReactNode {

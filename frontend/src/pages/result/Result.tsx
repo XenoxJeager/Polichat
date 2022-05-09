@@ -1,9 +1,10 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useRef } from 'react';
 import { getUrl } from "../../config/Constants";
 import { Vector } from "../quiz/Quiz";
 import { Chat } from "./components/Chat";
 import chad from "./imgs/chad.png";
+import ScrollIntoView from 'react-scroll-into-view';
 
 interface ResultProps {
     vector: Vector;
@@ -71,7 +72,9 @@ export default class Result extends React.Component<ResultProps, ResultState> {
     renderResult(): React.ReactNode {
         const name = this.state.ideology!.name;
         const description = this.state.ideology!.description;
+        
 
+        
         return (
             <div>
                 <div className="grid grid-cols-2 divide-x borderWidth:0 pt-5">
@@ -87,7 +90,7 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                     <div className="mx-14 my-5 text-center border-4 bg-gray-100">
                         <h1 className="text-3xl bold border-x-4 border-b-4 p-5">Chat with your comrades!</h1>
                         <div className="p-5 border-x-4">
-                            <div className="h-[80vh] overflow-y-scroll  "
+                            <div className="h-[80vh] overflow-y-scroll flex flex-col-reverse  "
                                 style={{ backgroundImage:`url(${chad})`, backgroundRepeat:'no-repeat', backgroundPosition:'fixed', backgroundSize:'98%'}}>
                                 <div className="">
                                 <Chat vector={this.props.vector}/>
