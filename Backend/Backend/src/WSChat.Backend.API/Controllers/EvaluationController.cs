@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Polichat_Backend.Services;
 
 namespace Polichat_Backend.Controllers;
 
@@ -30,10 +31,17 @@ public record IdeologyInfo(string Name, string Description);
 [ApiController]
 public class EvaluationEndpoint
 {
+    private AnalyticsService _analyticsService;
+    public EvaluationEndpoint(AnalyticsService analyticsService)
+    {
+        _analyticsService = analyticsService;
+    }
+    
     [Route("/evaluation")]
     [HttpGet]
     public async Task<IdeologyInfo> Evaluation(double x, double y)
     {
+        _analyticsService.EvaluationAnalytics++;
         bool InRange(double value, double min, double max) => (value - max) * (value - min) <= 0.0;
 
         IDictionary<int, Fields> IdeologyDictionary = new Dictionary<int, Fields>();

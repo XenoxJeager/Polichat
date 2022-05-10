@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { getUrl } from "../../config/Constants";
+import { stat } from "fs";
 
 interface AnalyticsProps {
 
@@ -12,8 +13,43 @@ interface Result {
 }
 
 interface AnalyticsData {
-    results: Result[];
-    activeChats: number;
+    //chatAnalytic
+    chatAnalytics : chatAnalytics;
+    //apiAnalytics
+    apiAnalytics : apiAnalytics;
+    //Times Evalueted
+    evaluationAnalytics : number;
+}
+
+interface chatAnalytics{
+    AuthRight? : AuthRight;
+    LibRight? : LibRight;
+    AuthLeft? : AuthLeft;
+    LibLeft? : LibLeft;
+}
+
+interface AuthRight{
+    activeUsers : number;
+    totalChatMessages : number;
+}
+
+interface AuthLeft{
+    activeUsers : number;
+    totalChatMessages : number;
+}
+
+interface LibLeft{
+    activeUsers : number;
+    totalChatMessages : number;
+}
+
+interface LibRight{
+    activeUsers : number;
+    totalChatMessages : number;
+}
+
+interface apiAnalytics{
+    totalApiCalls? : number;
 }
 
 interface AnalyticsState {
@@ -30,11 +66,20 @@ export class Analytics extends React.Component<AnalyticsProps, AnalyticsState> {
 
     
     componentDidMount() {    
-        axios.post(getUrl("/analytics"),
+        axios.get(getUrl("/analytics"),
         {
             headers: {"Authorization" : `Bearer ${localStorage.getItem("jwtToken")}`}
         })
-        .then (res => console.log(res))
+        .then((response) => {
+            console.log("RESPONDED")
+            this.setState({
+                data : response.data as AnalyticsData
+            });
+        })
+    }
+
+    totalChatters(){
+        //TODO
     }
 
 
@@ -42,14 +87,19 @@ export class Analytics extends React.Component<AnalyticsProps, AnalyticsState> {
 
 
     render(): React.ReactNode {
-        const loadIfNull = (value?: number): string => {
+        const loadIfNull = (value?: any | undefined): string => {
             return value ? value.toString() : "Loading...";
+
         };
-        const data = this.state.data;
+
+
+        console.log(this.state.data)
+
 
         return (
             <>
-                <p>Map</p>
+                
+
             </>
         );
     }
