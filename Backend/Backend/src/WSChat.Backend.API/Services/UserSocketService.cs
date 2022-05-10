@@ -52,8 +52,8 @@ public class UserSocketService
                 continue;
 
             await BroadcastDiscriminate(userSocket, $"{userSocket.Name}: {str}");
-            analytics.ActiveUsers -= 1;
         }
+        analytics.ActiveUsers -= 1;
 
         UserSockets.Remove(userSocket);
         await BroadcastIndiscriminate(userSocket.Room, GetMessage("admin", $"{userSocket.Name} left the chat!"));

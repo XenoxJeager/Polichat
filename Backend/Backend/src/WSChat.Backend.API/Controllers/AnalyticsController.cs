@@ -21,4 +21,5 @@ public class AnalyticsController : ControllerBase
     {
         return Ok(_analyticsService);
     }
+    
 }

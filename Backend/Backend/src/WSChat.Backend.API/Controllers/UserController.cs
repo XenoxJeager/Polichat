@@ -11,14 +11,18 @@ public class UserLoginData
     public string Password { get; set; }
 }
 
+
+
 [ApiController]
 public class UserController : ControllerBase
 {
+    private AnalyticsService _analyticsService;
     private readonly JwtService _jwtService;
 
-    public UserController(JwtService jwtService)
+    public UserController(JwtService jwtService, AnalyticsService analyticsService)
     {
         _jwtService = jwtService;
+        _analyticsService = analyticsService;
     }
 
     [HttpPost("/signIn")]

@@ -20,4 +20,5 @@ public class AnalyticsService
 {
     public Dictionary<Room, WebSocketChatAnalytics> ChatAnalytics { get; set; } = new();
     public ApiAnalytics ApiAnalytics { get; set; } = new();
+    public uint EvaluationAnalytics { get; set; }
 }
