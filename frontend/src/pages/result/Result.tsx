@@ -4,7 +4,6 @@ import { getUrl } from "../../config/Constants";
 import { Vector } from "../quiz/Quiz";
 import { Chat } from "./components/Chat";
 import chad from "./imgs/chad.png";
-import ScrollIntoView from 'react-scroll-into-view';
 
 interface ResultProps {
     vector: Vector;
