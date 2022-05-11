@@ -98,7 +98,35 @@ export class Analytics extends React.Component<AnalyticsProps, AnalyticsState> {
 
         return (
             <>
-                
+            <div>
+
+                <p>Quizes have benn evaluated: {this.state.data?.evaluationAnalytics}</p>
+
+                <div>
+                    <p>AuthLeft Statistics: </p>
+                    Active AuthLeft Users: {this.state.data?.chatAnalytics.AuthLeft?.activeUsers} <br />
+                    Total AuthLeft Messages: {this.state.data?.chatAnalytics.AuthLeft?.totalChatMessages}                    
+                </div>
+                <br />
+                <div>
+                    <p>AuthRight Statistics: </p>
+                    Active AuthRight Users: {this.state.data?.chatAnalytics.AuthRight?.activeUsers} <br />
+                    Total AuthRight Messages: {this.state.data?.chatAnalytics.AuthRight?.totalChatMessages}                    
+                </div>
+                <br />
+                <div>
+                    <p>LibLeft Statistics: </p>
+                    Active LibLeft Users: {this.state.data?.chatAnalytics.LibLeft?.activeUsers} <br />
+                    Total LibLeft Messages: {this.state.data?.chatAnalytics.LibLeft?.totalChatMessages}                    
+                </div>
+                <br />
+                <div>
+                    <p>LibRight Statistics: </p>
+                    Active LibRight Users: {this.state.data?.chatAnalytics.LibRight?.activeUsers} <br />
+                    Total LibRight Messages: {this.state.data?.chatAnalytics.LibRight?.totalChatMessages}                    
+                </div>
+
+            </div>
 
             </>
         );
