@@ -2,8 +2,8 @@
 
 public enum Room
 {
-    LibRight,
-    LibLeft,
+    AuthLeft,
     AuthRight,
-    AuthLeft
+    LibRight,
+    LibLeft
 }

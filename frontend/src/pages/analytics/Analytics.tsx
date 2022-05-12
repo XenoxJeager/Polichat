@@ -98,36 +98,53 @@ export class Analytics extends React.Component<AnalyticsProps, AnalyticsState> {
 
         return (
             <>
-            <div>
+            <div className="">
 
-                <p>Quizes have benn evaluated: {this.state.data?.evaluationAnalytics}</p>
+                <div className="justify-center flex p-10 whitespace-pre-line">
+                    <h1 className="  text-3xl font-bold ">{"Admin Pannel"}</h1>
+                </div>
 
-                <div>
-                    <p>AuthLeft Statistics: </p>
-                    Active AuthLeft Users: {this.state.data?.chatAnalytics.AuthLeft?.activeUsers} <br />
-                    Total AuthLeft Messages: {this.state.data?.chatAnalytics.AuthLeft?.totalChatMessages}                    
+                <div className="justify-center flex pb-10">
+                        API call amount:  {this.state.data?.apiAnalytics.totalApiCalls}
                 </div>
-                <br />
-                <div>
-                    <p>AuthRight Statistics: </p>
-                    Active AuthRight Users: {this.state.data?.chatAnalytics.AuthRight?.activeUsers} <br />
-                    Total AuthRight Messages: {this.state.data?.chatAnalytics.AuthRight?.totalChatMessages}                    
+
+                <div className="justify-center flex pb-10">
+                        Total Quizes Evaluated:  {this.state.data?.evaluationAnalytics}
                 </div>
-                <br />
-                <div>
-                    <p>LibLeft Statistics: </p>
-                    Active LibLeft Users: {this.state.data?.chatAnalytics.LibLeft?.activeUsers} <br />
-                    Total LibLeft Messages: {this.state.data?.chatAnalytics.LibLeft?.totalChatMessages}                    
+
+                <div className="grid grid-cols-4 gap-5 p-5">                    
+
+                    <div className="flex justify-center border-2 border-red-300 rounded p-6 bg-red-200">
+                        AuthLeft Statistics: <br />
+                        Active AuthLeft Users: {this.state.data?.chatAnalytics.AuthLeft?.activeUsers} <br />
+                        Total AuthLeft Messages: {this.state.data?.chatAnalytics.AuthLeft?.totalChatMessages}                 
+                    </div>
+                    <div className="flex justify-center border-2 border-blue-300 rounded p-6 bg-blue-200">
+                        AuthRight Statistics: <br />
+                        Active AuthRight Users: {this.state.data?.chatAnalytics.AuthRight?.activeUsers} <br />
+                        Total AuthRight Messages: {this.state.data?.chatAnalytics.AuthRight?.totalChatMessages}                    
+                    </div>
+                    <div className="flex justify-center border-2 border-green-300 rounded p-6 bg-green-200">
+                        LibLeft Statistics: <br />
+                        Active LibLeft Users: {this.state.data?.chatAnalytics.LibLeft?.activeUsers} <br />
+                        Total LibLeft Messages: {this.state.data?.chatAnalytics.LibLeft?.totalChatMessages}                    
+                    </div>
+                    <div className="flex justify-center border-2 border-yellow-300 rounded p-6 bg-yellow-200">
+                        LibRight Statistics: <br />
+                        Active LibRight Users: {this.state.data?.chatAnalytics.LibRight?.activeUsers} <br />
+                        Total LibRight Messages: {this.state.data?.chatAnalytics.LibRight?.totalChatMessages}                    
+                    </div>
+
                 </div>
-                <br />
-                <div>
-                    <p>LibRight Statistics: </p>
-                    Active LibRight Users: {this.state.data?.chatAnalytics.LibRight?.activeUsers} <br />
-                    Total LibRight Messages: {this.state.data?.chatAnalytics.LibRight?.totalChatMessages}                    
+
+                <div className="flex justify-center pt-10">
+                    <button onClick={() => this.componentDidMount()}
+                            className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">
+                        Refresh Statistics
+                    </button>
                 </div>
 
             </div>
-
             </>
         );
     }

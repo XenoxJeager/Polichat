@@ -36,7 +36,7 @@ export class Chat extends React.Component<ChatProps, ChatState> {
     }
 
     connect() {
-        const roomId = (this.props.vector.x > 0 ? 1 : 0) + (this.props.vector.y > 0 ? 2 : 0);
+        const roomId = (this.props.vector.x > 0 ? 1 : 0) + (this.props.vector.y < 0 ? 2 : 0);
         const connStr = "ws://localhost:3001/ws?room_id=" + roomId;
         this.ws = new WebSocket(connStr);
         let roomname = ""
