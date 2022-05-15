@@ -31,21 +31,25 @@ interface chatAnalytics{
 interface AuthRight{
     activeUsers : number;
     totalChatMessages : number;
+    totalUsers : number;
 }
 
 interface AuthLeft{
     activeUsers : number;
     totalChatMessages : number;
+    totalUsers : number;
 }
 
 interface LibLeft{
     activeUsers : number;
     totalChatMessages : number;
+    totalUsers : number;
 }
 
 interface LibRight{
     activeUsers : number;
     totalChatMessages : number;
+    totalUsers : number;
 }
 
 interface apiAnalytics{
@@ -95,6 +99,8 @@ export class Analytics extends React.Component<AnalyticsProps, AnalyticsState> {
 
         console.log(this.state.data)
 
+        console.log(this.state.data?.chatAnalytics.AuthLeft?.totalUsers)
+
 
         return (
             <>
@@ -117,22 +123,26 @@ export class Analytics extends React.Component<AnalyticsProps, AnalyticsState> {
                     <div className="flex justify-center border-2 border-red-300 rounded p-6 bg-red-200">
                         AuthLeft Statistics: <br />
                         Active AuthLeft Users: {this.state.data?.chatAnalytics.AuthLeft?.activeUsers} <br />
-                        Total AuthLeft Messages: {this.state.data?.chatAnalytics.AuthLeft?.totalChatMessages}                 
+                        Total AuthLeft Messages: {this.state.data?.chatAnalytics.AuthLeft?.totalChatMessages} <br />
+                        Total AuthLeft Users: {this.state.data?.chatAnalytics.AuthLeft?.totalUsers}      
                     </div>
                     <div className="flex justify-center border-2 border-blue-300 rounded p-6 bg-blue-200">
                         AuthRight Statistics: <br />
                         Active AuthRight Users: {this.state.data?.chatAnalytics.AuthRight?.activeUsers} <br />
-                        Total AuthRight Messages: {this.state.data?.chatAnalytics.AuthRight?.totalChatMessages}                    
+                        Total AuthRight Messages: {this.state.data?.chatAnalytics.AuthRight?.totalChatMessages} <br />
+                        Total AuthRight Users: {this.state.data?.chatAnalytics.AuthRight?.totalUsers}                   
                     </div>
                     <div className="flex justify-center border-2 border-green-300 rounded p-6 bg-green-200">
                         LibLeft Statistics: <br />
                         Active LibLeft Users: {this.state.data?.chatAnalytics.LibLeft?.activeUsers} <br />
-                        Total LibLeft Messages: {this.state.data?.chatAnalytics.LibLeft?.totalChatMessages}                    
+                        Total LibLeft Messages: {this.state.data?.chatAnalytics.LibLeft?.totalChatMessages} <br />
+                        Total LibLeft Users: {this.state.data?.chatAnalytics.LibLeft?.totalUsers}                     
                     </div>
                     <div className="flex justify-center border-2 border-yellow-300 rounded p-6 bg-yellow-200">
                         LibRight Statistics: <br />
                         Active LibRight Users: {this.state.data?.chatAnalytics.LibRight?.activeUsers} <br />
-                        Total LibRight Messages: {this.state.data?.chatAnalytics.LibRight?.totalChatMessages}                    
+                        Total LibRight Messages: {this.state.data?.chatAnalytics.LibRight?.totalChatMessages} <br />
+                        Total LibRight Users: {this.state.data?.chatAnalytics.LibRight?.totalUsers}                  
                     </div>
 
                 </div>

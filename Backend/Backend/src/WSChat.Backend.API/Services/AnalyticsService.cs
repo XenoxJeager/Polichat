@@ -8,6 +8,8 @@ public class WebSocketChatAnalytics
 {
     public ulong ActiveUsers { get; set; }
     public ulong TotalChatMessages { get; set; }
+    
+    public ulong TotalUsers { get; set; }
 }
 
 public class ApiAnalytics

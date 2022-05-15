@@ -34,6 +34,7 @@ public class UserSocketService
 
         var analytics = _analytics[userSocket.Room];
         analytics.ActiveUsers += 1;
+        analytics.TotalUsers += 1;
 
         UserSockets.Add(userSocket);
         await BroadcastIndiscriminate(userSocket.Room, GetMessage("admin", $"{userSocket.Name} joined the chat!"));
