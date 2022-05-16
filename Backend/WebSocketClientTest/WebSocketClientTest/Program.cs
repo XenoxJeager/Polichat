@@ -7,9 +7,9 @@ namespace WebSocketClientTest
     internal class Program
     {
         public static void Main(string[] args)
+
         {
-            string s = Console.ReadLine();
-            using (WebSocket ws = new WebSocket("ws://localhost:3000/ws?room_id="+s))
+            using (WebSocket ws = new WebSocket("ws://localhost:3001/ws?room_id=1"))
             {
                 int x = 0;
                 ws.OnMessage += Ws_OnMessage;

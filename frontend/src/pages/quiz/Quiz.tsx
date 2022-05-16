@@ -2,10 +2,10 @@ import axios from "axios";
 import React from "react";
 import { NavigateFunction, useNavigate } from "react-router";
 import { AnswerButton } from "./components/AnswerButton";
-import { normalizeQuestions, SelectableWeightedQuestion, Weight, WeightedQuestion } from "./questions";
+import { normalizeQuestions, SelectableWeightedQuestion, WeightedQuestion } from "./questions";
 
 interface QuizProps {
-    finishCallback: (plane: Plane) => void;
+    finishCallback: (vector: Vector) => void;
     navigate?: NavigateFunction;
 }
 
@@ -18,69 +18,44 @@ interface QuizState {
     windowState: WindowState;
     index: number;
     normalizedQuestions?: SelectableWeightedQuestion[] | undefined;
+    vector: Vector;
 }
 
-export class Plane {
-    x: number = 0;
-    y: number = 0;
+export interface Vector {
+    x: number;
+    y: number;
 }
 
 export class Quiz extends React.Component<QuizProps, QuizState> {
-    plane: Plane = new Plane();
-
     constructor(props: QuizProps) {
         super(props);
         this.state = {
             windowState: WindowState.Loading,
-            index: 0
+            index: 0,
+            vector: { x: 0, y: 0}
         }
 
         this.updatePlane = this.updatePlane.bind(this);
     }
 
-    componentDidMount() {
-        const rndQuestion = (text: string):SelectableWeightedQuestion => {
-            let weights: Weight[] = Array(4);
-            
-            for(let i = 0; i <= 3; i++) {
-                let mult = i > 1 ? -1 : 1;
-                weights[i] = {
-                    weightX: Math.random() * mult,
-                    weightY: Math.random() * mult
-                }
-            }
-
-            return {
-                text: text,
-                weights: weights,
-                selectedWeight: { weightX: 0, weightY: 0}
-            };
-        }
-
-        let amount = 20;
-        let questions: SelectableWeightedQuestion[] = Array(amount);
-
-        for(let i = 0; i < amount; i++)
-            questions[i] = rndQuestion("Question " + i)
-
-        this.setState({
-            normalizedQuestions: normalizeQuestions(questions),
-            windowState: WindowState.Active
-        });
-        return;
-        
-        axios.get("localhost:3000/questions")
-            .catch((response) => {
+    componentDidMount() {    
+        axios.get("http://localhost:3001/questions")
+            .then((response) => {
                 const questions = response.data as WeightedQuestion[];
-                this.setState({normalizedQuestions: normalizeQuestions(questions)});
+                this.setState({
+                    windowState: WindowState.Active,
+                    normalizedQuestions: normalizeQuestions(questions)
+                });
             })
-            .then((reason) => {});
+            .catch((reason) => {});
     }
 
-    updatePlane(weight: Weight) {
-        const func = (weight: Weight, mult: number) => {
-            this.plane.x += weight.weightX * mult;
-            this.plane.y += weight.weightY * mult;
+    updatePlane(add: Vector) {
+        let newVector = this.state.vector;
+
+        const func = (weight: Vector, mult: number) => {
+            newVector.x += weight.x * mult;
+            newVector.y += weight.y * mult;
         };
 
         const currentQuestion = this.state.normalizedQuestions?.[this.state.index];
@@ -88,24 +63,26 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
         if (currentQuestion == null) return;
 
         func(currentQuestion.selectedWeight, -1);
-        func(weight, 1);
-        currentQuestion.selectedWeight = weight;
+        func(add, 1);
+        currentQuestion.selectedWeight = add;
 
-        this.tryNextQuestion();
+        this.tryNextQuestion(newVector);
     }
 
-    tryNextQuestion() {
+    tryNextQuestion(vector?: Vector) {
         const nextIndex = this.state.index + 1;
 
         if(this.state.normalizedQuestions == null) return;
 
+        
         if (nextIndex >= this.state.normalizedQuestions.length) {
             // we have reached the end of the questions
-            this.props.finishCallback(this.plane);
-            (this.props.navigate)!("/result");
+            this.props.finishCallback(this.state.vector);
+
+            this.props.navigate!("/result");
         } else {
             // we go to the next question
-            this.setState({index: nextIndex});
+            this.setState({index: nextIndex, vector: vector!});
         }
     }
 
@@ -114,7 +91,7 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
 
         if (nextIndex < 0) {
             // we have reached the beginning of the questions
-            (this.props.navigate)!("/");
+            this.props.navigate!("/");
         } else {
             // we go to the previous question
             this.setState({index: nextIndex});
@@ -126,44 +103,30 @@ export class Quiz extends React.Component<QuizProps, QuizState> {
 
         if(currentQuestion == null) return;
 
+        var questionNum = 1
         const text = currentQuestion.text;
 
         return (
             <div className="flex flex-col items-center justify-center h-screen">
                 <div>
                     <div className="mb-3 text-center">
-                        <h1 className="text-2xl ">{text}</h1>
+                        <h1 className="text-2xl"><b>{this.state.index+1} out of 20</b></h1>
+                        <br />
+                        <h1 className="text-2xl "><b>{text}</b></h1>
                     </div>
                     
-                    <div className="flex items-center justify-center" > 
-                        <div className="m-10 inline-flex shadow-md focus:shadow-lg">
-                            <div className="rounded-l inline-block px-8 py-4 bg-green-600 text-white font-medium text-s leading-tight uppercase hover:bg-green-500 transition duration-150 ease-in-out">
-                                <AnswerButton text="Strongly Agree" weight={currentQuestion.weights[0]} onClick={this.updatePlane} />
-                            </div>
-
-                            <div className="inline-block px-8 py-4 bg-green-500 text-white font-medium text-s leading-tight uppercase hover:bg-green-400 transition duration-150 ease-in-out">
-                                <AnswerButton text="Agree" weight={currentQuestion.weights[1]} onClick={this.updatePlane} />
-                            </div>
-
-                            <div className="inline-block px-7 py-4 bg-white-500 text-black font-medium text-s leading-tight uppercase hover:bg-gray-100 transition duration-150 ease-in-out">
-                                <AnswerButton text="Neutral/Skip" weight={{weightX: 0, weightY: 0}} onClick={this.updatePlane}/>
-                            </div>
-
-                            <div className="inline-block px-6 py-4 bg-red-500 text-white font-medium text-s leading-tight uppercase hover:bg-red-400 transition duration-150 ease-in-out">
-                                <AnswerButton text="Disagree" weight={currentQuestion.weights[2]} onClick={this.updatePlane} />
-                            </div>
-                        
-                            <div className="rounded-r inline-block px-6 py-4 bg-red-600 text-white font-medium text-s leading-tight uppercase hover:bg-red-500 transition duration-150 ease-in-out">
-                                <AnswerButton text="Strongly Disagree" weight={currentQuestion.weights[3]} onClick={this.updatePlane} />
-                            </div>
-                        </div>
+                    <div className="lg:flex items-center justify-center lg:p-4 grid  v-screen" > 
+                        <AnswerButton text="Strongly Agree" styling="lg:rounded-l bg-green-600 hover:bg-green-500 px-10" vector={currentQuestion.weights[0]} onClick={this.updatePlane}/>
+                        <AnswerButton text="Agree" styling="bg-green-500 hover:bg-green-400 px-11" vector={currentQuestion.weights[1]} onClick={this.updatePlane} />
+                        <AnswerButton text="Neutral/Skip" styling="text-black bg-white-500 hover:bg-gray-100" vector={{x: 0, y: 0}} onClick={this.updatePlane}/>
+                        <AnswerButton text="Disagree" styling="bg-red-500 hover:bg-red-400" vector={currentQuestion.weights[2]} onClick={this.updatePlane} />
+                        <AnswerButton text="Strongly Disagree" styling="lg:rounded-r  bg-red-600 hover:bg-red-500" vector={currentQuestion.weights[3]} onClick={this.updatePlane} />
                     </div>
-
                 </div>
 
-                <div className="justify-center flex">
+                <div className="flex justify-center items-center lg:m-0 m-2.5">
                     <button onClick={this.tryPreviousQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-l">Prev</button>
-                    <button onClick={this.tryNextQuestion.bind(this)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-r">Next</button>
+                    <button onClick={() => this.tryNextQuestion()} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-r">Next</button>
                 </div>
             </div>
         );
