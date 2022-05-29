@@ -4,7 +4,7 @@ import { getUrl } from "../../config/Constants";
 import { Vector } from "../quiz/Quiz";
 import { Chat } from "./components/Chat";
 import chad from "./imgs/chad.png";
-
+import img from "./imgs/political_compass_str.png"
 interface ResultProps {
     vector: Vector;
 }
@@ -82,7 +82,7 @@ export default class Result extends React.Component<ResultProps, ResultState> {
                                 <h1 className="text-lg">Your Result is: {this.props.vector.x.toFixed(3)} | {this.props.vector.y.toFixed(3)}</h1>
                                 <h1 className="text-4xl bold mb-5">{name}</h1>
 
-                                <img className="w-3/4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Political_Compass_standard_model.svg/543px-Political_Compass_standard_model.svg.png"alt="political"></img>
+                                <img className="w-3/4" src={img} alt="political"></img>
                                 <h1 className="italic">{description}</h1>                        
                             </div>
                         </div>
