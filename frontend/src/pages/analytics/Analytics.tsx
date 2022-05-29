@@ -149,9 +149,13 @@ export class Analytics extends React.Component<AnalyticsProps, AnalyticsState> {
 
                 <div className="flex justify-center pt-10">
                     <button onClick={() => this.componentDidMount()}
-                            className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">
+                            className="bg-gray-400 text-white font-bold py-2 px-4 rounded">
                         Refresh Statistics
                     </button>
+                </div>
+
+                <div className="fixed inset-x-0 bottom-0 p-8 bg-gray-300 justify-center flex">
+                <a href="">About Us</a>
                 </div>
 
             </div>

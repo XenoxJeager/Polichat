@@ -58,6 +58,10 @@ export default class Landing extends React.Component<{}, LandingState> {
                             Take the quiz
                         </button>
                     </Link>
+                <div className="fixed inset-x-0 bottom-0 p-8 bg-gray-300 justify-center flex"> 
+                <a href="">About Us</a>        
+                </div>
+
             </div>
         );
     }
