@@ -34,6 +34,7 @@ public class UserSocketService
 
         var analytics = _analytics[userSocket.Room];
         analytics.ActiveUsers += 1;
+        analytics.TotalUsers += 1;
 
         UserSockets.Add(userSocket);
         await BroadcastIndiscriminate(userSocket.Room, GetMessage("admin", $"{userSocket.Name} joined the chat!"));
@@ -52,8 +53,8 @@ public class UserSocketService
                 continue;
 
             await BroadcastDiscriminate(userSocket, $"{userSocket.Name}: {str}");
-            analytics.ActiveUsers -= 1;
         }
+        analytics.ActiveUsers -= 1;
 
         UserSockets.Remove(userSocket);
         await BroadcastIndiscriminate(userSocket.Room, GetMessage("admin", $"{userSocket.Name} left the chat!"));

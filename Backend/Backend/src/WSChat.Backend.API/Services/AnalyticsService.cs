@@ -8,6 +8,8 @@ public class WebSocketChatAnalytics
 {
     public ulong ActiveUsers { get; set; }
     public ulong TotalChatMessages { get; set; }
+    
+    public ulong TotalUsers { get; set; }
 }
 
 public class ApiAnalytics
@@ -20,4 +22,5 @@ public class AnalyticsService
 {
     public Dictionary<Room, WebSocketChatAnalytics> ChatAnalytics { get; set; } = new();
     public ApiAnalytics ApiAnalytics { get; set; } = new();
+    public uint EvaluationAnalytics { get; set; }
 }

@@ -36,7 +36,7 @@ export class Chat extends React.Component<ChatProps, ChatState> {
     }
 
     connect() {
-        const roomId = (this.props.vector.x > 0 ? 1 : 0) + (this.props.vector.y > 0 ? 2 : 0);
+        const roomId = (this.props.vector.x > 0 ? 1 : 0) + (this.props.vector.y < 0 ? 2 : 0);
         const connStr = "ws://localhost:3001/ws?room_id=" + roomId;
         this.ws = new WebSocket(connStr);
         let roomname = ""
@@ -123,19 +123,19 @@ export class Chat extends React.Component<ChatProps, ChatState> {
 
         return (
             <>
-                <div>
+                <div className="w-4/5">
                     <ol>
                         {chatHistory}
                     </ol>
 
                     <input 
-                        className="px-4 py-2 mt-2 rounded-5 bg-gray-50 mr-2 mb-3"
+                        className="text-xl px-4 py-2 mt-2 rounded-5 bg-gray-50 mr-2 mb-3"
                         onChange={(ev) => this.setState({inputText: ev.target.value})} 
                         value={this.state.inputText} 
                         placeholder="Message..."
                         onKeyUp={this.handleInput.bind(this)}>
                     </input>
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded justify-end" onClick={this.sendMessage.bind(this)}>Send</button>
+                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 rounded justify-end" onClick={this.sendMessage.bind(this)}>Send</button>
                     
                 </div>
 
