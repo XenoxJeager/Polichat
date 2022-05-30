@@ -84,7 +84,7 @@ public static class Program
         app.UseRouting();
         
         app.UseCors();
-        
+
         app.UseAuthentication();
         app.UseAuthorization();
         
