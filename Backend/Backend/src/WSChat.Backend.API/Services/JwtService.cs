@@ -40,7 +40,8 @@ public class JwtService
     
     private bool CheckCredentials(string username, string password)
     {
-        Environment.SetEnvironmentVariable("passwd","admin");
-        return username == "admin" && password == Environment.GetEnvironmentVariable("passwd");
+        // Environment.SetEnvironmentVariable("passwd","admin");
+        var pass = Environment.GetEnvironmentVariable("passwd") ?? throw new ArgumentNullException("Die Variable passwd ist nicht gesetzt.");
+        return username == "admin" && password == pass;
     }
 }

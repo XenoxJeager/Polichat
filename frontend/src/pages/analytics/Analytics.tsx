@@ -107,7 +107,7 @@ export class Analytics extends React.Component<AnalyticsProps, AnalyticsState> {
             <div className="">
 
                 <div className="justify-center flex p-10 whitespace-pre-line">
-                    <h1 className="  text-3xl font-bold ">{"Admin Pannel"}</h1>
+                    <h1 className="  text-3xl font-bold ">{"Admin Panel"}</h1>
                 </div>
 
                 <div className="justify-center flex pb-10">
@@ -155,7 +155,7 @@ export class Analytics extends React.Component<AnalyticsProps, AnalyticsState> {
                 </div>
 
                 <div className="fixed inset-x-0 bottom-0 p-8 bg-gray-300 justify-center flex">
-                <a href="">About Us</a>
+                
                 </div>
 
             </div>
